@@ -1,0 +1,638 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="gdlimatModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_CLIENTES">
+          <Key>
+            <PropertyRef Name="idCliente" />
+          </Key>
+          <Property Name="idCliente" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="nombreCliente" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="contacto" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="direccion" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="telefono" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="lugar" Type="varchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'gdlimat.dbo.tbl_CONTROLDEUSUARIOS' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="tbl_CONTROLDEUSUARIOS">
+          <Key>
+            <PropertyRef Name="registro" />
+          </Key>
+          <Property Name="registro" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_EQUIPO">
+          <Key>
+            <PropertyRef Name="idEquipo" />
+          </Key>
+          <Property Name="idEquipo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="tipoEquipo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="region" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="potenciaMaxima" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="serie" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="marca" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="subEstacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tipoRefrigeracion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tension" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="cantidadFase" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="cantidadAceite" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="annio" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="MVA" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="relacioTension" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="humedadRelativa" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="temperaturaAmbiente" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="temperaturaEquipo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ultimoReporte" Type="varchar" MaxLength="20" />
+          <Property Name="ultimoMantenimiento" Type="varchar" MaxLength="20" />
+          <Property Name="ultimoMuestreo" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tbl_PRUEBACROMATOGRAFICA">
+          <Key>
+            <PropertyRef Name="idPruebaCroma" />
+          </Key>
+          <Property Name="idPruebaCroma" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idEquipo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="dioxidoCarbono" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="acetileno" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="etileno" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="etano" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="metano" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="monoxidoCarbono" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="hidrogeno" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="totalGasesCombusibles" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_PRUEBAELECTRICA">
+          <Key>
+            <PropertyRef Name="idPruebaElectrica" />
+          </Key>
+          <Property Name="idPruebaElectrica" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idEquipo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="rigidezDioElectrica" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="factorPotencia100C" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="resistividad100" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_PRUEBAFISICA">
+          <Key>
+            <PropertyRef Name="idPruebasFisicas" />
+          </Key>
+          <Property Name="idPruebasFisicas" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idEquipo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="examenVisual" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="color" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="tensionInterfacial" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="gravedadEspecifica15C15C" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_PRUEBAQUIMICA">
+          <Key>
+            <PropertyRef Name="idPruebaEQuimica" />
+          </Key>
+          <Property Name="idPruebaEQuimica" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idEquipo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="contenidoAgua" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="numNeutralizacionAcido" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PBC" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_REPORTE">
+          <Key>
+            <PropertyRef Name="codigoMuestra" />
+          </Key>
+          <Property Name="codigoMuestra" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="idCliente" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="cliente" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="equipo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="direccion" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="telefono" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="lugarMuestreo" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="tipoMuestra" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="procMuestreo" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="recolectorMuestra" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="fechaMuestreo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="fechaPruebaPBC" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="condAmbientales" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'gdlimat.dbo.tbl_UNIDADMEDIDA' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="tbl_UNIDADMEDIDA">
+          <Key>
+            <PropertyRef Name="factorAMedir" />
+            <PropertyRef Name="unidadMedida" />
+          </Key>
+          <Property Name="factorAMedir" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="unidadMedida" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="valorRecomendado" Type="varchar" MaxLength="40" />
+        </EntityType>
+        <Association Name="FK_Equipo_PruebaCromatografica">
+          <End Role="tbl_EQUIPO" Type="Self.tbl_EQUIPO" Multiplicity="1" />
+          <End Role="tbl_PRUEBACROMATOGRAFICA" Type="Self.tbl_PRUEBACROMATOGRAFICA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_EQUIPO">
+              <PropertyRef Name="idEquipo" />
+            </Principal>
+            <Dependent Role="tbl_PRUEBACROMATOGRAFICA">
+              <PropertyRef Name="idEquipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipo_PruebaElectrica">
+          <End Role="tbl_EQUIPO" Type="Self.tbl_EQUIPO" Multiplicity="1" />
+          <End Role="tbl_PRUEBAELECTRICA" Type="Self.tbl_PRUEBAELECTRICA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_EQUIPO">
+              <PropertyRef Name="idEquipo" />
+            </Principal>
+            <Dependent Role="tbl_PRUEBAELECTRICA">
+              <PropertyRef Name="idEquipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipo_PruebaFisica">
+          <End Role="tbl_EQUIPO" Type="Self.tbl_EQUIPO" Multiplicity="1" />
+          <End Role="tbl_PRUEBAFISICA" Type="Self.tbl_PRUEBAFISICA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_EQUIPO">
+              <PropertyRef Name="idEquipo" />
+            </Principal>
+            <Dependent Role="tbl_PRUEBAFISICA">
+              <PropertyRef Name="idEquipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipo_PruebaQuimica">
+          <End Role="tbl_EQUIPO" Type="Self.tbl_EQUIPO" Multiplicity="1" />
+          <End Role="tbl_PRUEBAQUIMICA" Type="Self.tbl_PRUEBAQUIMICA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_EQUIPO">
+              <PropertyRef Name="idEquipo" />
+            </Principal>
+            <Dependent Role="tbl_PRUEBAQUIMICA">
+              <PropertyRef Name="idEquipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Muestra_Cliente">
+          <End Role="tbl_CLIENTES" Type="Self.tbl_CLIENTES" Multiplicity="1" />
+          <End Role="tbl_REPORTE" Type="Self.tbl_REPORTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CLIENTES">
+              <PropertyRef Name="idCliente" />
+            </Principal>
+            <Dependent Role="tbl_REPORTE">
+              <PropertyRef Name="cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Muestra_Equipo">
+          <End Role="tbl_EQUIPO" Type="Self.tbl_EQUIPO" Multiplicity="1" />
+          <End Role="tbl_REPORTE" Type="Self.tbl_REPORTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_EQUIPO">
+              <PropertyRef Name="idEquipo" />
+            </Principal>
+            <Dependent Role="tbl_REPORTE">
+              <PropertyRef Name="equipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="gdlimatModelStoreContainer">
+          <EntitySet Name="tbl_CLIENTES" EntityType="Self.tbl_CLIENTES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_EQUIPO" EntityType="Self.tbl_EQUIPO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PRUEBACROMATOGRAFICA" EntityType="Self.tbl_PRUEBACROMATOGRAFICA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PRUEBAELECTRICA" EntityType="Self.tbl_PRUEBAELECTRICA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PRUEBAFISICA" EntityType="Self.tbl_PRUEBAFISICA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PRUEBAQUIMICA" EntityType="Self.tbl_PRUEBAQUIMICA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_REPORTE" EntityType="Self.tbl_REPORTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_CONTROLDEUSUARIOS" EntityType="Self.tbl_CONTROLDEUSUARIOS" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_CONTROLDEUSUARIOS].[registro] AS [registro]
+    FROM [dbo].[tbl_CONTROLDEUSUARIOS] AS [tbl_CONTROLDEUSUARIOS]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbl_UNIDADMEDIDA" EntityType="Self.tbl_UNIDADMEDIDA" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_UNIDADMEDIDA].[factorAMedir] AS [factorAMedir], 
+    [tbl_UNIDADMEDIDA].[unidadMedida] AS [unidadMedida], 
+    [tbl_UNIDADMEDIDA].[valorRecomendado] AS [valorRecomendado]
+    FROM [dbo].[tbl_UNIDADMEDIDA] AS [tbl_UNIDADMEDIDA]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Equipo_PruebaCromatografica" Association="Self.FK_Equipo_PruebaCromatografica">
+            <End Role="tbl_EQUIPO" EntitySet="tbl_EQUIPO" />
+            <End Role="tbl_PRUEBACROMATOGRAFICA" EntitySet="tbl_PRUEBACROMATOGRAFICA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipo_PruebaElectrica" Association="Self.FK_Equipo_PruebaElectrica">
+            <End Role="tbl_EQUIPO" EntitySet="tbl_EQUIPO" />
+            <End Role="tbl_PRUEBAELECTRICA" EntitySet="tbl_PRUEBAELECTRICA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipo_PruebaFisica" Association="Self.FK_Equipo_PruebaFisica">
+            <End Role="tbl_EQUIPO" EntitySet="tbl_EQUIPO" />
+            <End Role="tbl_PRUEBAFISICA" EntitySet="tbl_PRUEBAFISICA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipo_PruebaQuimica" Association="Self.FK_Equipo_PruebaQuimica">
+            <End Role="tbl_EQUIPO" EntitySet="tbl_EQUIPO" />
+            <End Role="tbl_PRUEBAQUIMICA" EntitySet="tbl_PRUEBAQUIMICA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Muestra_Cliente" Association="Self.FK_Muestra_Cliente">
+            <End Role="tbl_CLIENTES" EntitySet="tbl_CLIENTES" />
+            <End Role="tbl_REPORTE" EntitySet="tbl_REPORTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Muestra_Equipo" Association="Self.FK_Muestra_Equipo">
+            <End Role="tbl_EQUIPO" EntitySet="tbl_EQUIPO" />
+            <End Role="tbl_REPORTE" EntitySet="tbl_REPORTE" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="gdlimatModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_CLIENTES">
+          <Key>
+            <PropertyRef Name="idCliente" />
+          </Key>
+          <Property Name="idCliente" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombreCliente" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="contacto" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="direccion" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lugar" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tbl_REPORTE" Relationship="Self.FK_Muestra_Cliente" FromRole="tbl_CLIENTES" ToRole="tbl_REPORTE" />
+        </EntityType>
+        <EntityType Name="tbl_EQUIPO">
+          <Key>
+            <PropertyRef Name="idEquipo" />
+          </Key>
+          <Property Name="idEquipo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tipoEquipo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="region" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="potenciaMaxima" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="serie" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="marca" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="subEstacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tipoRefrigeracion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tension" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cantidadFase" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cantidadAceite" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="annio" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MVA" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="relacioTension" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="humedadRelativa" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="temperaturaAmbiente" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="temperaturaEquipo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ultimoReporte" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ultimoMantenimiento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ultimoMuestreo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_PRUEBACROMATOGRAFICA" Relationship="Self.FK_Equipo_PruebaCromatografica" FromRole="tbl_EQUIPO" ToRole="tbl_PRUEBACROMATOGRAFICA" />
+          <NavigationProperty Name="tbl_PRUEBAELECTRICA" Relationship="Self.FK_Equipo_PruebaElectrica" FromRole="tbl_EQUIPO" ToRole="tbl_PRUEBAELECTRICA" />
+          <NavigationProperty Name="tbl_PRUEBAFISICA" Relationship="Self.FK_Equipo_PruebaFisica" FromRole="tbl_EQUIPO" ToRole="tbl_PRUEBAFISICA" />
+          <NavigationProperty Name="tbl_PRUEBAQUIMICA" Relationship="Self.FK_Equipo_PruebaQuimica" FromRole="tbl_EQUIPO" ToRole="tbl_PRUEBAQUIMICA" />
+          <NavigationProperty Name="tbl_REPORTE" Relationship="Self.FK_Muestra_Equipo" FromRole="tbl_EQUIPO" ToRole="tbl_REPORTE" />
+        </EntityType>
+        <EntityType Name="tbl_PRUEBACROMATOGRAFICA">
+          <Key>
+            <PropertyRef Name="idPruebaCroma" />
+          </Key>
+          <Property Name="idPruebaCroma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idEquipo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dioxidoCarbono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="acetileno" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="etileno" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="etano" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="metano" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="monoxidoCarbono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="hidrogeno" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="totalGasesCombusibles" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tbl_EQUIPO" Relationship="Self.FK_Equipo_PruebaCromatografica" FromRole="tbl_PRUEBACROMATOGRAFICA" ToRole="tbl_EQUIPO" />
+        </EntityType>
+        <EntityType Name="tbl_PRUEBAELECTRICA">
+          <Key>
+            <PropertyRef Name="idPruebaElectrica" />
+          </Key>
+          <Property Name="idPruebaElectrica" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idEquipo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="rigidezDioElectrica" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="factorPotencia100C" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="resistividad100" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tbl_EQUIPO" Relationship="Self.FK_Equipo_PruebaElectrica" FromRole="tbl_PRUEBAELECTRICA" ToRole="tbl_EQUIPO" />
+        </EntityType>
+        <EntityType Name="tbl_PRUEBAFISICA">
+          <Key>
+            <PropertyRef Name="idPruebasFisicas" />
+          </Key>
+          <Property Name="idPruebasFisicas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idEquipo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="examenVisual" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="color" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tensionInterfacial" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="gravedadEspecifica15C15C" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tbl_EQUIPO" Relationship="Self.FK_Equipo_PruebaFisica" FromRole="tbl_PRUEBAFISICA" ToRole="tbl_EQUIPO" />
+        </EntityType>
+        <EntityType Name="tbl_PRUEBAQUIMICA">
+          <Key>
+            <PropertyRef Name="idPruebaEQuimica" />
+          </Key>
+          <Property Name="idPruebaEQuimica" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idEquipo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="contenidoAgua" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="numNeutralizacionAcido" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PBC" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tbl_EQUIPO" Relationship="Self.FK_Equipo_PruebaQuimica" FromRole="tbl_PRUEBAQUIMICA" ToRole="tbl_EQUIPO" />
+        </EntityType>
+        <EntityType Name="tbl_REPORTE">
+          <Key>
+            <PropertyRef Name="codigoMuestra" />
+          </Key>
+          <Property Name="codigoMuestra" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idCliente" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cliente" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="equipo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="direccion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lugarMuestreo" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tipoMuestra" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="procMuestreo" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="recolectorMuestra" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fechaMuestreo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fechaPruebaPBC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="condAmbientales" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tbl_CLIENTES" Relationship="Self.FK_Muestra_Cliente" FromRole="tbl_REPORTE" ToRole="tbl_CLIENTES" />
+          <NavigationProperty Name="tbl_EQUIPO" Relationship="Self.FK_Muestra_Equipo" FromRole="tbl_REPORTE" ToRole="tbl_EQUIPO" />
+        </EntityType>
+        <EntityType Name="tbl_CONTROLDEUSUARIOS">
+          <Key>
+            <PropertyRef Name="registro" />
+          </Key>
+          <Property Name="registro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_UNIDADMEDIDA">
+          <Key>
+            <PropertyRef Name="factorAMedir" />
+            <PropertyRef Name="unidadMedida" />
+          </Key>
+          <Property Name="factorAMedir" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="unidadMedida" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="valorRecomendado" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Muestra_Cliente">
+          <End Role="tbl_CLIENTES" Type="Self.tbl_CLIENTES" Multiplicity="1" />
+          <End Role="tbl_REPORTE" Type="Self.tbl_REPORTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CLIENTES">
+              <PropertyRef Name="idCliente" />
+            </Principal>
+            <Dependent Role="tbl_REPORTE">
+              <PropertyRef Name="cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipo_PruebaCromatografica">
+          <End Role="tbl_EQUIPO" Type="Self.tbl_EQUIPO" Multiplicity="1" />
+          <End Role="tbl_PRUEBACROMATOGRAFICA" Type="Self.tbl_PRUEBACROMATOGRAFICA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_EQUIPO">
+              <PropertyRef Name="idEquipo" />
+            </Principal>
+            <Dependent Role="tbl_PRUEBACROMATOGRAFICA">
+              <PropertyRef Name="idEquipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipo_PruebaElectrica">
+          <End Role="tbl_EQUIPO" Type="Self.tbl_EQUIPO" Multiplicity="1" />
+          <End Role="tbl_PRUEBAELECTRICA" Type="Self.tbl_PRUEBAELECTRICA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_EQUIPO">
+              <PropertyRef Name="idEquipo" />
+            </Principal>
+            <Dependent Role="tbl_PRUEBAELECTRICA">
+              <PropertyRef Name="idEquipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipo_PruebaFisica">
+          <End Role="tbl_EQUIPO" Type="Self.tbl_EQUIPO" Multiplicity="1" />
+          <End Role="tbl_PRUEBAFISICA" Type="Self.tbl_PRUEBAFISICA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_EQUIPO">
+              <PropertyRef Name="idEquipo" />
+            </Principal>
+            <Dependent Role="tbl_PRUEBAFISICA">
+              <PropertyRef Name="idEquipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipo_PruebaQuimica">
+          <End Role="tbl_EQUIPO" Type="Self.tbl_EQUIPO" Multiplicity="1" />
+          <End Role="tbl_PRUEBAQUIMICA" Type="Self.tbl_PRUEBAQUIMICA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_EQUIPO">
+              <PropertyRef Name="idEquipo" />
+            </Principal>
+            <Dependent Role="tbl_PRUEBAQUIMICA">
+              <PropertyRef Name="idEquipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Muestra_Equipo">
+          <End Role="tbl_EQUIPO" Type="Self.tbl_EQUIPO" Multiplicity="1" />
+          <End Role="tbl_REPORTE" Type="Self.tbl_REPORTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_EQUIPO">
+              <PropertyRef Name="idEquipo" />
+            </Principal>
+            <Dependent Role="tbl_REPORTE">
+              <PropertyRef Name="equipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="gdlimatEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_CLIENTES" EntityType="Self.tbl_CLIENTES" />
+          <EntitySet Name="tbl_EQUIPO" EntityType="Self.tbl_EQUIPO" />
+          <EntitySet Name="tbl_PRUEBACROMATOGRAFICA" EntityType="Self.tbl_PRUEBACROMATOGRAFICA" />
+          <EntitySet Name="tbl_PRUEBAELECTRICA" EntityType="Self.tbl_PRUEBAELECTRICA" />
+          <EntitySet Name="tbl_PRUEBAFISICA" EntityType="Self.tbl_PRUEBAFISICA" />
+          <EntitySet Name="tbl_PRUEBAQUIMICA" EntityType="Self.tbl_PRUEBAQUIMICA" />
+          <EntitySet Name="tbl_REPORTE" EntityType="Self.tbl_REPORTE" />
+          <EntitySet Name="tbl_CONTROLDEUSUARIOS" EntityType="Self.tbl_CONTROLDEUSUARIOS" />
+          <EntitySet Name="tbl_UNIDADMEDIDA" EntityType="Self.tbl_UNIDADMEDIDA" />
+          <AssociationSet Name="FK_Muestra_Cliente" Association="Self.FK_Muestra_Cliente">
+            <End Role="tbl_CLIENTES" EntitySet="tbl_CLIENTES" />
+            <End Role="tbl_REPORTE" EntitySet="tbl_REPORTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipo_PruebaCromatografica" Association="Self.FK_Equipo_PruebaCromatografica">
+            <End Role="tbl_EQUIPO" EntitySet="tbl_EQUIPO" />
+            <End Role="tbl_PRUEBACROMATOGRAFICA" EntitySet="tbl_PRUEBACROMATOGRAFICA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipo_PruebaElectrica" Association="Self.FK_Equipo_PruebaElectrica">
+            <End Role="tbl_EQUIPO" EntitySet="tbl_EQUIPO" />
+            <End Role="tbl_PRUEBAELECTRICA" EntitySet="tbl_PRUEBAELECTRICA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipo_PruebaFisica" Association="Self.FK_Equipo_PruebaFisica">
+            <End Role="tbl_EQUIPO" EntitySet="tbl_EQUIPO" />
+            <End Role="tbl_PRUEBAFISICA" EntitySet="tbl_PRUEBAFISICA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipo_PruebaQuimica" Association="Self.FK_Equipo_PruebaQuimica">
+            <End Role="tbl_EQUIPO" EntitySet="tbl_EQUIPO" />
+            <End Role="tbl_PRUEBAQUIMICA" EntitySet="tbl_PRUEBAQUIMICA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Muestra_Equipo" Association="Self.FK_Muestra_Equipo">
+            <End Role="tbl_EQUIPO" EntitySet="tbl_EQUIPO" />
+            <End Role="tbl_REPORTE" EntitySet="tbl_REPORTE" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="gdlimatModelStoreContainer" CdmEntityContainer="gdlimatEntities">
+          <EntitySetMapping Name="tbl_CLIENTES">
+            <EntityTypeMapping TypeName="gdlimatModel.tbl_CLIENTES">
+              <MappingFragment StoreEntitySet="tbl_CLIENTES">
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="nombreCliente" ColumnName="nombreCliente" />
+                <ScalarProperty Name="contacto" ColumnName="contacto" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="lugar" ColumnName="lugar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_EQUIPO">
+            <EntityTypeMapping TypeName="gdlimatModel.tbl_EQUIPO">
+              <MappingFragment StoreEntitySet="tbl_EQUIPO">
+                <ScalarProperty Name="idEquipo" ColumnName="idEquipo" />
+                <ScalarProperty Name="tipoEquipo" ColumnName="tipoEquipo" />
+                <ScalarProperty Name="region" ColumnName="region" />
+                <ScalarProperty Name="potenciaMaxima" ColumnName="potenciaMaxima" />
+                <ScalarProperty Name="serie" ColumnName="serie" />
+                <ScalarProperty Name="marca" ColumnName="marca" />
+                <ScalarProperty Name="subEstacion" ColumnName="subEstacion" />
+                <ScalarProperty Name="tipoRefrigeracion" ColumnName="tipoRefrigeracion" />
+                <ScalarProperty Name="tension" ColumnName="tension" />
+                <ScalarProperty Name="cantidadFase" ColumnName="cantidadFase" />
+                <ScalarProperty Name="cantidadAceite" ColumnName="cantidadAceite" />
+                <ScalarProperty Name="annio" ColumnName="annio" />
+                <ScalarProperty Name="MVA" ColumnName="MVA" />
+                <ScalarProperty Name="relacioTension" ColumnName="relacioTension" />
+                <ScalarProperty Name="humedadRelativa" ColumnName="humedadRelativa" />
+                <ScalarProperty Name="temperaturaAmbiente" ColumnName="temperaturaAmbiente" />
+                <ScalarProperty Name="temperaturaEquipo" ColumnName="temperaturaEquipo" />
+                <ScalarProperty Name="ultimoReporte" ColumnName="ultimoReporte" />
+                <ScalarProperty Name="ultimoMantenimiento" ColumnName="ultimoMantenimiento" />
+                <ScalarProperty Name="ultimoMuestreo" ColumnName="ultimoMuestreo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PRUEBACROMATOGRAFICA">
+            <EntityTypeMapping TypeName="gdlimatModel.tbl_PRUEBACROMATOGRAFICA">
+              <MappingFragment StoreEntitySet="tbl_PRUEBACROMATOGRAFICA">
+                <ScalarProperty Name="idPruebaCroma" ColumnName="idPruebaCroma" />
+                <ScalarProperty Name="idEquipo" ColumnName="idEquipo" />
+                <ScalarProperty Name="dioxidoCarbono" ColumnName="dioxidoCarbono" />
+                <ScalarProperty Name="acetileno" ColumnName="acetileno" />
+                <ScalarProperty Name="etileno" ColumnName="etileno" />
+                <ScalarProperty Name="etano" ColumnName="etano" />
+                <ScalarProperty Name="metano" ColumnName="metano" />
+                <ScalarProperty Name="monoxidoCarbono" ColumnName="monoxidoCarbono" />
+                <ScalarProperty Name="hidrogeno" ColumnName="hidrogeno" />
+                <ScalarProperty Name="totalGasesCombusibles" ColumnName="totalGasesCombusibles" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PRUEBAELECTRICA">
+            <EntityTypeMapping TypeName="gdlimatModel.tbl_PRUEBAELECTRICA">
+              <MappingFragment StoreEntitySet="tbl_PRUEBAELECTRICA">
+                <ScalarProperty Name="idPruebaElectrica" ColumnName="idPruebaElectrica" />
+                <ScalarProperty Name="idEquipo" ColumnName="idEquipo" />
+                <ScalarProperty Name="rigidezDioElectrica" ColumnName="rigidezDioElectrica" />
+                <ScalarProperty Name="factorPotencia100C" ColumnName="factorPotencia100C" />
+                <ScalarProperty Name="resistividad100" ColumnName="resistividad100" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PRUEBAFISICA">
+            <EntityTypeMapping TypeName="gdlimatModel.tbl_PRUEBAFISICA">
+              <MappingFragment StoreEntitySet="tbl_PRUEBAFISICA">
+                <ScalarProperty Name="idPruebasFisicas" ColumnName="idPruebasFisicas" />
+                <ScalarProperty Name="idEquipo" ColumnName="idEquipo" />
+                <ScalarProperty Name="examenVisual" ColumnName="examenVisual" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="tensionInterfacial" ColumnName="tensionInterfacial" />
+                <ScalarProperty Name="gravedadEspecifica15C15C" ColumnName="gravedadEspecifica15C15C" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PRUEBAQUIMICA">
+            <EntityTypeMapping TypeName="gdlimatModel.tbl_PRUEBAQUIMICA">
+              <MappingFragment StoreEntitySet="tbl_PRUEBAQUIMICA">
+                <ScalarProperty Name="idPruebaEQuimica" ColumnName="idPruebaEQuimica" />
+                <ScalarProperty Name="idEquipo" ColumnName="idEquipo" />
+                <ScalarProperty Name="contenidoAgua" ColumnName="contenidoAgua" />
+                <ScalarProperty Name="numNeutralizacionAcido" ColumnName="numNeutralizacionAcido" />
+                <ScalarProperty Name="PBC" ColumnName="PBC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_REPORTE">
+            <EntityTypeMapping TypeName="gdlimatModel.tbl_REPORTE">
+              <MappingFragment StoreEntitySet="tbl_REPORTE">
+                <ScalarProperty Name="codigoMuestra" ColumnName="codigoMuestra" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="cliente" ColumnName="cliente" />
+                <ScalarProperty Name="equipo" ColumnName="equipo" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="lugarMuestreo" ColumnName="lugarMuestreo" />
+                <ScalarProperty Name="tipoMuestra" ColumnName="tipoMuestra" />
+                <ScalarProperty Name="procMuestreo" ColumnName="procMuestreo" />
+                <ScalarProperty Name="recolectorMuestra" ColumnName="recolectorMuestra" />
+                <ScalarProperty Name="fechaMuestreo" ColumnName="fechaMuestreo" />
+                <ScalarProperty Name="fechaPruebaPBC" ColumnName="fechaPruebaPBC" />
+                <ScalarProperty Name="condAmbientales" ColumnName="condAmbientales" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_CONTROLDEUSUARIOS">
+            <EntityTypeMapping TypeName="gdlimatModel.tbl_CONTROLDEUSUARIOS">
+              <MappingFragment StoreEntitySet="tbl_CONTROLDEUSUARIOS">
+                <ScalarProperty Name="registro" ColumnName="registro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_UNIDADMEDIDA">
+            <EntityTypeMapping TypeName="gdlimatModel.tbl_UNIDADMEDIDA">
+              <MappingFragment StoreEntitySet="tbl_UNIDADMEDIDA">
+                <ScalarProperty Name="factorAMedir" ColumnName="factorAMedir" />
+                <ScalarProperty Name="unidadMedida" ColumnName="unidadMedida" />
+                <ScalarProperty Name="valorRecomendado" ColumnName="valorRecomendado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
