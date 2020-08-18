@@ -1,7 +1,60 @@
-﻿
+﻿@model List<gcLimat.Models.ViewModels.ListEquipoViewModel>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Equipos Registrados";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <tr>
+                <th>idEquipo</th>
+                <th>tipoEquipo</th>
+                <th>region</th>
+                <th>potenciaMaxima</th>
+                <th>serie</th>
+                <th>marca</th>
+                <th>subEstacion</th>
+                <th>tipoRefrigeracion</th>
+                <th>tension</th>
+                <th>cantidadFase</th>
+                <th>cantidadAceite</th>
+                <th>annio</th>
+                <th>MVA</th>
+                <th>relacioTension</th>
+                <th>humedadRelativa</th>
+                <th>temperaturaAmbiente</th>
+                <th>temperaturaEquipo</th>
+                <th>ultimoReporte</th>
+                <th>ultimoMantenimiento</th>
+                <th>ultimoMuestreo</th>
+            </tr>
+            @foreach (var oElemento in Model){
+        <tr>
+            <td>@oElemento.idEquipo</td>
+            <td>@oElemento.tipoEquipo</td>
+            <td>@oElemento.region</td>
+            <td>@oElemento.potenciaMaxima</td>
+            <td>@oElemento.serie</td>
+            <td>@oElemento.marca</td>
+            <td>@oElemento.subEstacion</td>
+            <td>@oElemento.tipoRefrigeracion</td>
+            <td>@oElemento.tension</td>
+            <td>@oElemento.cantidadFase</td>
+            <td>@oElemento.cantidadAceite</td>
+            <td>@oElemento.annio</td>
+            <td>@oElemento.MVA</td>
+            <td>@oElemento.relacioTension</td>
+            <td>@oElemento.humedadRelativa</td>
+            <td>@oElemento.temperaturaAmbiente</td>
+            <td>@oElemento.temperaturaEquipo</td>
+            <td>@oElemento.ultimoReporte</td>
+            <td>@oElemento.ultimoMantenimiento</td>
+            <td>@oElemento.ultimoMuestreo</td>
+        </tr>
+            }
+        </table>
+    </div>
+
+</div>

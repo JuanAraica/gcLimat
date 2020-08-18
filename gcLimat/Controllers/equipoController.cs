@@ -14,8 +14,10 @@ namespace gcLimat.Controllers
         // GET: equipo
         public ActionResult Index()
         {
+
+            List<ListEquipoViewModel> lst;
             using (gdlimatEntities db= new gdlimatEntities()) {
-                var lst = (from d in db.tbl_EQUIPO
+                  lst = (from d in db.tbl_EQUIPO
                            select new ListEquipoViewModel
                            {
                                idEquipo=d.idEquipo,
@@ -40,7 +42,7 @@ namespace gcLimat.Controllers
                                ultimoMuestreo = d.ultimoMuestreo
                            }).ToList();
             }
-                return View();
+                return View(lst);
         }
     }
 }
