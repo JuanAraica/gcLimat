@@ -60,13 +60,19 @@ namespace gcLimat.Models.ViewModels
         [Display(Name = "Temperatura del equipo")]
         public String temperaturaEquipo { get; set; }
         [Required]
+        [DataType(DataType.Date)]
         [Display(Name = "Ultimo reporte")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public String ultimoReporte { get; set; }
         [Required]
-        [Display(Name = "Ultimo muestreo")]
+        [DataType(DataType.Date)]
+        [Display(Name = "Ultimo mantenimiento")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public String ultimoMantenimiento { get; set; }
         [Required]
+        [DataType(DataType.Date)]
         [Display(Name = "Ultimo muestreo")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public String ultimoMuestreo { get; set; }
 
     }
