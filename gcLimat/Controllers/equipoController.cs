@@ -44,5 +44,14 @@ namespace gcLimat.Controllers
             }
                 return View(lst);
         }
+        public ActionResult NuevoEquipo() {
+            return View( );
+
+        }
+        public ActionResult NuevoEquipo()
+        {
+
+        }
+
     }
 }
