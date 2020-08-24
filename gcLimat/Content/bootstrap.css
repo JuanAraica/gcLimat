@@ -4,6 +4,32 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+.menuCSS3 ul {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.menuCSS3 a {
+    display: block;
+    padding: 2em;
+    background-color: #F9B53C;
+    text-decoration: none;
+    color: #191C26;
+}
+
+    .menuCSS3 a:hover {
+        background-color: #CC673B;
+    }
+
+.menuCSS3 ul li ul {
+    display: none;
+}
+
+    .menuCSS3 ul li a:hover + ul, .menuCSS3 ul li ul:hover {
+        display: block;
+    }
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;

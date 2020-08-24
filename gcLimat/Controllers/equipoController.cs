@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web.Mvc;
+using System.Web.Services.Description;
+using System.Windows.Controls;
 using gcLimat.Models;
 using gcLimat.Models.ViewModels;
+using Xceed.Wpf.Toolkit;
 
 namespace gcLimat.Controllers
 {
@@ -19,7 +22,7 @@ namespace gcLimat.Controllers
                   lst = (from d in db.tbl_EQUIPO
                            select new ListEquipoViewModel
                            {
-                               idEquipo=d.idEquipo,
+                               idEquipo =d.idEquipo,
                                tipoEquipo = d.tipoEquipo,
                                region = d.region,
                                potenciaMaxima = d.potenciaMaxima,
@@ -98,7 +101,7 @@ namespace gcLimat.Controllers
             using (gdlimatEntities db = new gdlimatEntities())
             {
                 var oEquipo = db.tbl_EQUIPO.Find(idEquipo);
-                model.idEquipo = oEquipo.idEquipo;
+
                 model.tipoEquipo = oEquipo.tipoEquipo;
                 model.region = oEquipo.region;
                 model.potenciaMaxima = oEquipo.potenciaMaxima;
@@ -118,6 +121,7 @@ namespace gcLimat.Controllers
                 model.ultimoReporte = oEquipo.ultimoReporte;
                 model.ultimoMantenimiento = oEquipo.ultimoMantenimiento;
                 model.ultimoMuestreo = oEquipo.ultimoMuestreo;
+                model.idEquipo = oEquipo.idEquipo;
             }
             return View(model);
         }

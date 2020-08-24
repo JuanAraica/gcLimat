@@ -1,65 +1,67 @@
 ﻿@model List<gcLimat.Models.ViewModels.ListEquipoViewModel>
-@{
+@{<br><br>
     ViewBag.Title = "Equipos Registrados";
 }
 
 <h2>@ViewBag.Title</h2>
+<br><br>
+    <div class="row">
+        <a href="~/equipo/NuevoEquipo" class="btn btn-primary">Nuevo</a>
+        <br><br>
+        <div class="col-md-12">
+            <table class="table">
+                <tr>
+                    <th>ID del equipo</th>
+                    <th>Tipo de equipo</th>
+                    <th>region</th>
+                    <th>potenciaMaxima</th>
+                    <th>serie</th>
+                    <th>marca</th>
+                    <th>subEstacion</th>
+                    <th>tipoRefrigeracion</th>
+                    <th>tension</th>
+                    <th>cantidadFase</th>
+                    <th>cantidadAceite</th>
+                    <th>annio</th>
+                    <th>MVA</th>
+                    <th>relacioTension</th>
+                    <th>humedadRelativa</th>
+                    <th>temperaturaAmbiente</th>
+                    <th>temperaturaEquipo</th>
+                    <th>ultimoReporte</th>
+                    <th>ultimoMantenimiento</th>
+                    <th>ultimoMuestreo</th>
+                </tr>
+                @foreach (var oElemento in Model)
+                {
+                    <tr>
+                        <td>@oElemento.idEquipo</td>
+                        <td>@oElemento.tipoEquipo</td>
+                        <td>@oElemento.region</td>
+                        <td>@oElemento.potenciaMaxima</td>
+                        <td>@oElemento.serie</td>
+                        <td>@oElemento.marca</td>
+                        <td>@oElemento.subEstacion</td>
+                        <td>@oElemento.tipoRefrigeracion</td>
+                        <td>@oElemento.tension</td>
+                        <td>@oElemento.cantidadFase</td>
+                        <td>@oElemento.cantidadAceite</td>
+                        <td>@oElemento.annio</td>
+                        <td>@oElemento.MVA</td>
+                        <td>@oElemento.relacioTension</td>
+                        <td>@oElemento.humedadRelativa</td>
+                        <td>@oElemento.temperaturaAmbiente</td>
+                        <td>@oElemento.temperaturaEquipo</td>
+                        <td>@oElemento.ultimoReporte</td>
+                        <td>@oElemento.ultimoMantenimiento</td>
+                        <td>@oElemento.ultimoMuestreo</td>
+                        <td>
+                            <a class="btn btn-default" href="~/equipo/EditarEquipo/@oElemento.idEquipo">Editar</a>
+                            <a class="btn btn-danger" href="~/equipo/EliminarEquipo/@oElemento.idEquipo">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
 
-<div class="row">
-    <a href="~/equipo/NuevoEquipo" class="btn btn-primary">Nuevo</a>
-    <div class="col-md-12">
-        <table class="table">
-            <tr>
-                <th>idEquipo</th>
-                <th>tipoEquipo</th>
-                <th>region</th>
-                <th>potenciaMaxima</th>
-                <th>serie</th>
-                <th>marca</th>
-                <th>subEstacion</th>
-                <th>tipoRefrigeracion</th>
-                <th>tension</th>
-                <th>cantidadFase</th>
-                <th>cantidadAceite</th>
-                <th>annio</th>
-                <th>MVA</th>
-                <th>relacioTension</th>
-                <th>humedadRelativa</th>
-                <th>temperaturaAmbiente</th>
-                <th>temperaturaEquipo</th>
-                <th>ultimoReporte</th>
-                <th>ultimoMantenimiento</th>
-                <th>ultimoMuestreo</th>
-            </tr>
-            @foreach (var oElemento in Model){
-        <tr>
-            <td>@oElemento.idEquipo</td>
-            <td>@oElemento.tipoEquipo</td>
-            <td>@oElemento.region</td>
-            <td>@oElemento.potenciaMaxima</td>
-            <td>@oElemento.serie</td>
-            <td>@oElemento.marca</td>
-            <td>@oElemento.subEstacion</td>
-            <td>@oElemento.tipoRefrigeracion</td>
-            <td>@oElemento.tension</td>
-            <td>@oElemento.cantidadFase</td>
-            <td>@oElemento.cantidadAceite</td>
-            <td>@oElemento.annio</td>
-            <td>@oElemento.MVA</td>
-            <td>@oElemento.relacioTension</td>
-            <td>@oElemento.humedadRelativa</td>
-            <td>@oElemento.temperaturaAmbiente</td>
-            <td>@oElemento.temperaturaEquipo</td>
-            <td>@oElemento.ultimoReporte</td>
-            <td>@oElemento.ultimoMantenimiento</td>
-            <td>@oElemento.ultimoMuestreo</td>
-            <td>
-                <a class="btn btn-default" href="~/equipo/EditarEquipo/@oElemento.idEquipo">Editar</a>
-                <a class="btn btn-danger" href="~/equipo/EliminarEquipo/@oElemento.idEquipo">Eliminar</a>
-            </td>
-        </tr>
-            }
-        </table>
     </div>
-
-</div>

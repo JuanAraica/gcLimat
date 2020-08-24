@@ -17,22 +17,25 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Nombre de la aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("GD LIMAT", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                </ul>
-            </div>
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Equipos registrados", "Index", "equipo")</li>
+                <li>@Html.ActionLink("Pruebas", "Pruebas", "equipo")</li>
+                <li>@Html.ActionLink("Mantenimiento", "Mantenimiento", "eqiopo")</li>
+            </ul>
+        </div>
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+            <p align="right">&copy; @DateTime.Now.Year || LIMAT</p>
+             <h6 align="center">
+    Esta plataforma, incluidos los datos adjuntos, es para el uso exclusivo de personal autorizado y contiene información confidencial y protegida legalmente. Si usted no ha sido autorizado. Por favor abandonar la plataforma de manera inmediata, de lo contrario debera atenerse a medidas legales por parte del INSTITUTO COSTARRICENSE DE ELECTRICIDAD.
+</h6> 
         </footer>
     </div>
 
