@@ -1,12 +1,64 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <style type="text/css">
+
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #header {
+            margin: auto;
+            width: 500px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        ul, ol {
+            list-style: none;
+        }
+
+        .nav > li {
+            float: left;
+        }
+
+        .nav li a {
+            background-color: #000;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 12px;
+            display: block;
+        }
+
+            .nav li a:hover {
+                background-color: #434343;
+            }
+
+        .nav li ul {
+            display: none;
+            position: absolute;
+            min-width: 140px;
+        }
+
+        .nav li:hover > ul {
+            display: block;
+        }
+
+        .nav li ul li {
+            position: relative;
+        }
+
+            .nav li ul li ul {
+                right: -140px;
+                top: 0px;
+            }
+    </style>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -20,11 +72,27 @@
                 @Html.ActionLink("GD LIMAT", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Equipos registrados", "Index", "equipo")</li>
-                <li>@Html.ActionLink("Pruebas", "Pruebas", "equipo")</li>
-                <li>@Html.ActionLink("Mantenimiento", "Mantenimiento", "eqiopo")</li>
-            </ul>
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Equipos registrados", "Index", "equipo")</li>
+                    <li>
+                        @Html.ActionLink("Pruebas", "", "")
+                        <ul>
+                            <li>@Html.ActionLink("Pruebas Fisicas", "PruebasFisicas", "equipo")</li>
+                            <li>@Html.ActionLink("Pruebas Quimicas", "PruebasQuimicas", "equipo")</li>
+                            <li>@Html.ActionLink("Pruebas Eletcricas", "PruebasElectricas", "equipo")</li>
+                            <li>@Html.ActionLink("Pruebas Cromatograficas", "PruebasCromatograficas", "equipo")</li>
+                        </ul>
+                    </li>
+                    <li>
+                        @Html.ActionLink("Mantenimiento", "", "")
+                        <ul>
+                            <li>@Html.ActionLink("Mantenimiento Preventivo", "MantenimientoPreventivo", "equipo")</li>
+                            <li>@Html.ActionLink("Mantenimiento Correctivo", "MantenimientoCorrectivo", "equipo")</li>
+                            <li>@Html.ActionLink("Recoleccion de Muestras", "RecoleccionMuestras", "equipo")</li>
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("Reportes", " ", " ")</li>
+                </ul>
         </div>
         </div>
     </div>

@@ -146,6 +146,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\equipoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MantenimientoController.cs" />
+    <Compile Include="Controllers\PruebaCromatograficaController.cs" />
+    <Compile Include="Controllers\PruebaElectricaController.cs" />
+    <Compile Include="Controllers\PruebaFisicaController.cs" />
+    <Compile Include="Controllers\PruebaQuimicaController.cs" />
+    <Compile Include="Controllers\RegistroController.cs" />
+    <Compile Include="Controllers\ReporteController.cs" />
+    <Compile Include="Controllers\UnidadMedidaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -193,6 +202,24 @@
     </Compile>
     <Compile Include="Models\ViewModels\EquipoViewModel.cs" />
     <Compile Include="Models\ViewModels\ListEquipoViewModel.cs" />
+    <Compile Include="Models\ViewModels\ListMantenimientoViewModel.cs" />
+    <Compile Include="Models\ViewModels\ListPruebaElectricaViewModel.cs" />
+    <Compile Include="Models\ViewModels\ListPruebaFisicaViewModel.cs" />
+    <Compile Include="Models\ViewModels\ListPruebaQuimicaVewModel.cs" />
+    <Compile Include="Models\ViewModels\ListPruebaCromatograficaViewModel.cs" />
+    <Compile Include="Models\ViewModels\ListRegistroViewModel.cs" />
+    <Compile Include="Models\ViewModels\ListReporteViewModel.cs" />
+    <Compile Include="Models\ViewModels\ListUnidadMedida.cs" />
+    <Compile Include="Models\ViewModels\ListUnidadMedidaViewModel.cs" />
+    <Compile Include="Models\ViewModels\LoginViewModel.cs" />
+    <Compile Include="Models\ViewModels\MantenimientoViewModel.cs" />
+    <Compile Include="Models\ViewModels\PruebaCromatograficaViewModel.cs" />
+    <Compile Include="Models\ViewModels\PruebaElectricaViewModel.cs" />
+    <Compile Include="Models\ViewModels\PruebaFisicaViewModel.cs" />
+    <Compile Include="Models\ViewModels\PruebaQuimicaViewModel.cs" />
+    <Compile Include="Models\ViewModels\RegistroViewModel.cs" />
+    <Compile Include="Models\ViewModels\ReporteViewModel.cs" />
+    <Compile Include="Models\ViewModels\UnidadMedida.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -254,6 +281,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Login\" />
+    <Folder Include="Views\Mantenimiento\" />
+    <Folder Include="Views\PruebaCromatografica\" />
+    <Folder Include="Views\PruebaElectrica\" />
+    <Folder Include="Views\PruebaQuimica\" />
+    <Folder Include="Views\Pruebas\" />
+    <Folder Include="Views\Registro\" />
+    <Folder Include="Views\Reporte\" />
+    <Folder Include="Views\UnidadMedida\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

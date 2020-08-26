@@ -13,52 +13,68 @@
                 <tr>
                     <th>ID del equipo</th>
                     <th>Tipo de equipo</th>
-                    <th>region</th>
-                    <th>potenciaMaxima</th>
-                    <th>serie</th>
-                    <th>marca</th>
-                    <th>subEstacion</th>
-                    <th>tipoRefrigeracion</th>
-                    <th>tension</th>
-                    <th>cantidadFase</th>
-                    <th>cantidadAceite</th>
-                    <th>annio</th>
+                    <th>Región</th>
+                    <th>Potencia Maxima</th>
+                    <th>Serie</th>
+                    <th>Marca</th>
+                    <th>Sub Estacion</th>
+                    <th>Tipo de Refrigeración</th>
+                    <th>Tensión</th>
+                    <th>Cantidad Fase</th>
+                    <th>Cantidad de Aceite</th>
+                    <th>Año</th>
                     <th>MVA</th>
-                    <th>relacioTension</th>
-                    <th>humedadRelativa</th>
-                    <th>temperaturaAmbiente</th>
-                    <th>temperaturaEquipo</th>
-                    <th>ultimoReporte</th>
-                    <th>ultimoMantenimiento</th>
-                    <th>ultimoMuestreo</th>
+                    <th>Relación Tensión</th>
+                    <th>Humedad Relativa</th>
+                    <th>Temperatura Ambiente</th>
+                    <th>Temperatura del Equipo</th>
+                    <th>Ultimo Reporte</th>
+                    <th>Ultimo Mantenimiento</th>
+                    <th>Ultimo Muestreo</th>
                 </tr>
-                @foreach (var oElemento in Model)
+                @foreach (var oEquipo in Model)
                 {
                     <tr>
-                        <td>@oElemento.idEquipo</td>
-                        <td>@oElemento.tipoEquipo</td>
-                        <td>@oElemento.region</td>
-                        <td>@oElemento.potenciaMaxima</td>
-                        <td>@oElemento.serie</td>
-                        <td>@oElemento.marca</td>
-                        <td>@oElemento.subEstacion</td>
-                        <td>@oElemento.tipoRefrigeracion</td>
-                        <td>@oElemento.tension</td>
-                        <td>@oElemento.cantidadFase</td>
-                        <td>@oElemento.cantidadAceite</td>
-                        <td>@oElemento.annio</td>
-                        <td>@oElemento.MVA</td>
-                        <td>@oElemento.relacioTension</td>
-                        <td>@oElemento.humedadRelativa</td>
-                        <td>@oElemento.temperaturaAmbiente</td>
-                        <td>@oElemento.temperaturaEquipo</td>
-                        <td>@oElemento.ultimoReporte</td>
-                        <td>@oElemento.ultimoMantenimiento</td>
-                        <td>@oElemento.ultimoMuestreo</td>
+                        <td>@oEquipo.idEquipo</td>
+                        <td>@oEquipo.tipoEquipo</td>
+                        <td>@oEquipo.region</td>
+                        <td>@oEquipo.potenciaMaxima</td>
+                        <td>@oEquipo.serie</td>
+                        <td>@oEquipo.marca</td>
+                        <td>@oEquipo.subEstacion</td>
+                        <td>@oEquipo.tipoRefrigeracion</td>
+                        <td>@oEquipo.tension</td>
+                        <td>@oEquipo.cantidadFase</td>
+                        <td>@oEquipo.cantidadAceite</td>
+                        <td>@oEquipo.annio</td>
+                        <td>@oEquipo.MVA</td>
+                        <td>@oEquipo.relacioTension</td>
+                        <td>@oEquipo.humedadRelativa</td>
+                        <td>@oEquipo.temperaturaAmbiente</td>
+                        <td>@oEquipo.temperaturaEquipo</td>
+                        <td>@oEquipo.ultimoReporte</td>
+                        <td>@oEquipo.ultimoMantenimiento</td>
+                        <td>@oEquipo.ultimoMuestreo</td>
                         <td>
-                            <a class="btn btn-default" href="~/equipo/EditarEquipo/@oElemento.idEquipo">Editar</a>
-                            <a class="btn btn-danger" href="~/equipo/EliminarEquipo/@oElemento.idEquipo">Eliminar</a>
+                            <select name="Accion" id="accion">
+                                <option value="volvo">Agregar Prueba Fisica</option>
+                                <option value="volvo">Agregar Prueba Cromatografica</option>
+                                <option value="volvo">Agregar Prueba Electrica</option>
+                                <option value="volvo">Agregar Prueba Quimica</option>
+                            </select>
                         </td>
+                        <td><a class="btn btn-default" href="~/equipo/EliminarEquipo/@oEquipo.idEquipo">Ingresar Prueba</a></td>
+                        <td>
+                            <select name="Mantenimiento" id="accion">
+                                <option value="volvo">Mantenimiento Preventivo</option>
+                                <option value="volvo">Mantenimiento Correctivo</option>
+                                <option value="volvo">Recoleccion de muestras</option>
+                            </select>
+                        </td>
+                        <td><a class="btn btn-default" href="~/equipo/EliminarEquipo/@oEquipo.idEquipo">Elegir accion</a></td>
+                        <td><a class="btn btn-default" href="~/equipo/EliminarEquipo/@oEquipo.idEquipo">Ultimo Informe</a></td>
+                        <td><a class="btn btn-default" href="~/equipo/EditarEquipo/@oEquipo.idEquipo">Editar</a></td>
+                        <td><a class="btn btn-danger" href="~/equipo/EliminarEquipo/@oEquipo.idEquipo">Eliminar</a></td>
                     </tr>
                 }
             </table>
