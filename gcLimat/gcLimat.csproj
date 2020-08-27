@@ -209,7 +209,6 @@
     <Compile Include="Models\ViewModels\ListPruebaCromatograficaViewModel.cs" />
     <Compile Include="Models\ViewModels\ListRegistroViewModel.cs" />
     <Compile Include="Models\ViewModels\ListReporteViewModel.cs" />
-    <Compile Include="Models\ViewModels\ListUnidadMedida.cs" />
     <Compile Include="Models\ViewModels\ListUnidadMedidaViewModel.cs" />
     <Compile Include="Models\ViewModels\LoginViewModel.cs" />
     <Compile Include="Models\ViewModels\MantenimientoViewModel.cs" />
@@ -219,7 +218,7 @@
     <Compile Include="Models\ViewModels\PruebaQuimicaViewModel.cs" />
     <Compile Include="Models\ViewModels\RegistroViewModel.cs" />
     <Compile Include="Models\ViewModels\ReporteViewModel.cs" />
-    <Compile Include="Models\ViewModels\UnidadMedida.cs" />
+    <Compile Include="Models\ViewModels\UnidadMedidaViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -278,18 +277,26 @@
     <Content Include="Views\equipo\EditarEquipo.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\equipo\Index.cshtml" />
+    <Content Include="Views\UnidadMedida\UnidadMedida.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Mantenimiento\Manteniento.cshtml" />
+    <Content Include="Views\PruebaCromatografica\PruebaCromatografica.cshtml" />
+    <Content Include="Views\PruebaElectrica\PruebaElectrica.cshtml" />
+    <Content Include="Views\PruebaFisica\PruebaElectrica.cshtml" />
+    <Content Include="Views\PruebaQuimica\PruebaQuimica.cshtml" />
+    <Content Include="Views\Registro\Registro.cshtml" />
+    <Content Include="Views\Reporte\Reporte.cshtml" />
+    <Content Include="Views\Mantenimiento\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\PruebaCromatografica\Index.cshtml" />
+    <Content Include="Views\PruebaElectrica\Index.cshtml" />
+    <Content Include="Views\PruebaFisica\Index.cshtml" />
+    <Content Include="Views\PruebaQuimica\Index.cshtml" />
+    <Content Include="Views\Registro\Index.cshtml" />
+    <Content Include="Views\Reporte\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Login\" />
-    <Folder Include="Views\Mantenimiento\" />
-    <Folder Include="Views\PruebaCromatografica\" />
-    <Folder Include="Views\PruebaElectrica\" />
-    <Folder Include="Views\PruebaQuimica\" />
-    <Folder Include="Views\Pruebas\" />
-    <Folder Include="Views\Registro\" />
-    <Folder Include="Views\Reporte\" />
-    <Folder Include="Views\UnidadMedida\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

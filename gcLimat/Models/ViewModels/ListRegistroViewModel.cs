@@ -7,5 +7,6 @@ namespace gcLimat.Models.ViewModels
 {
     public class ListRegistroViewModel
     {
+        public String registro { get; set; }
     }
 }

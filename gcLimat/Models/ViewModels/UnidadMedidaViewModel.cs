@@ -5,7 +5,7 @@ using System.Web;
 
 namespace gcLimat.Models.ViewModels
 {
-    public class UnidadMedida
+    public class UnidadMedidaViewModel
     {
     }
 }
