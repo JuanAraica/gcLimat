@@ -17,32 +17,32 @@ namespace gcLimat.Controllers
         public ActionResult Index()
         {
             List<ListEquipoViewModel> lst;
-            using (gdlimatEntities db= new gdlimatEntities()) 
+            using (gdlimatEntities1 db= new gdlimatEntities1())
             {
-                  lst = (from d in db.tbl_EQUIPO
-                           select new ListEquipoViewModel
-                           {
-                               idEquipo =d.idEquipo,
-                               tipoEquipo = d.tipoEquipo,
-                               region = d.region,
-                               potenciaMaxima = d.potenciaMaxima,
-                               serie = d.serie,
-                               marca = d.marca,
-                               subEstacion = d.subEstacion,
-                               tipoRefrigeracion = d.tipoRefrigeracion,
-                               tension = d.tension,
-                               cantidadFase = d.cantidadFase,
-                               cantidadAceite = d.cantidadAceite,
-                               annio = d.annio,
-                               MVA = d.MVA,
-                               relacioTension = d.relacioTension,
-                               humedadRelativa = d.humedadRelativa,
-                               temperaturaAmbiente = d.temperaturaAmbiente,
-                               temperaturaEquipo = d.temperaturaEquipo,
-                               ultimoReporte = d.ultimoReporte,
-                               ultimoMantenimiento = d.ultimoMantenimiento,
-                               ultimoMuestreo = d.ultimoMuestreo
-                           }).ToList();
+                lst = (from d in db.tbl_EQUIPO
+                       select new ListEquipoViewModel
+                       {
+                           idEquipo = d.idEquipo,
+                           tipoEquipo = d.tipoEquipo,
+                           region = d.region,
+                           potenciaMaxima = d.potenciaMaxima,
+                           serie = d.serie,
+                           marca = d.marca,
+                           subEstacion = d.subEstacion,
+                           tipoRefrigeracion = d.tipoRefrigeracion,
+                           tension = d.tension,
+                           cantidadFase = d.cantidadFase,
+                           cantidadAceite = d.cantidadAceite,
+                           annio = d.annio,
+                           MVA = d.MVA,
+                           relacioTension = d.relacioTension,
+                           humedadRelativa = d.humedadRelativa,
+                           temperaturaAmbiente = d.temperaturaAmbiente,
+                           temperaturaEquipo = d.temperaturaEquipo,
+                           ultimoReporte = d.ultimoReporte,
+                           ultimoMantenimiento = d.ultimoMantenimiento,
+                           ultimoMuestreo = d.ultimoMuestreo
+                       }).ToList();
             }
             return View(lst);
         }
@@ -59,7 +59,7 @@ namespace gcLimat.Controllers
             {
                 if (ModelState.IsValid) 
                 {
-                    using (gdlimatEntities db = new gdlimatEntities())
+                    using (gdlimatEntities1 db = new gdlimatEntities1())
                     { 
                     var oEquipo = new tbl_EQUIPO();
                     oEquipo.idEquipo = model.idEquipo;
@@ -98,7 +98,7 @@ namespace gcLimat.Controllers
         public ActionResult EditarEquipo(String idEquipo)
         {
             EquipoViewModel model = new EquipoViewModel();
-            using (gdlimatEntities db = new gdlimatEntities())
+            using (gdlimatEntities1 db = new gdlimatEntities1())
             {
                 var oEquipo = db.tbl_EQUIPO.Find(idEquipo);
 
@@ -133,7 +133,7 @@ namespace gcLimat.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    using (gdlimatEntities db = new gdlimatEntities())
+                    using (gdlimatEntities1 db = new gdlimatEntities1())
                     {
                         var oEquipo = db.tbl_EQUIPO.Find(model.idEquipo);
                         oEquipo.idEquipo = model.idEquipo;
@@ -174,7 +174,7 @@ namespace gcLimat.Controllers
         [HttpGet]
         public ActionResult EliminarEquipo(String idEquipo)
         {
-            using (gdlimatEntities db = new gdlimatEntities())
+            using (gdlimatEntities1 db = new gdlimatEntities1())
             {
                 var oEquipo = db.tbl_EQUIPO.Find(idEquipo);
                 db.tbl_EQUIPO.Remove(oEquipo);

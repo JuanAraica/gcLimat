@@ -16,8 +16,17 @@ namespace gcLimat.Controllers
         public ActionResult Index()
         {
             List<ListUnidadMedidaViewModel> lst;
-            using (gdlimatEntities db = new gdlimatEntities())
-                return View();
+            using (gdlimatEntities1 db = new gdlimatEntities1())
+            {
+                lst = (from d in db.tbl_UNIDADMEDIDA
+                       select new ListUnidadMedidaViewModel
+                       {
+                            factorAMedir = d.factorAMedir,
+                            unidadMedida = d.unidadMedida,
+                            valorRecomendado = d.valorRecomendado
+                        }).ToList();
+            }
+            return View(lst);
         }
     }
 }

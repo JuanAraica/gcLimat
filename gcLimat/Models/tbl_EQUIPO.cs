@@ -17,10 +17,12 @@ namespace gcLimat.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tbl_EQUIPO()
         {
+            this.tbl_MANTENIMIENTO = new HashSet<tbl_MANTENIMIENTO>();
             this.tbl_PRUEBACROMATOGRAFICA = new HashSet<tbl_PRUEBACROMATOGRAFICA>();
             this.tbl_PRUEBAELECTRICA = new HashSet<tbl_PRUEBAELECTRICA>();
             this.tbl_PRUEBAFISICA = new HashSet<tbl_PRUEBAFISICA>();
             this.tbl_PRUEBAQUIMICA = new HashSet<tbl_PRUEBAQUIMICA>();
+            this.tbl_RECOLECCIONMUESTRA = new HashSet<tbl_RECOLECCIONMUESTRA>();
             this.tbl_REPORTE = new HashSet<tbl_REPORTE>();
         }
     
@@ -46,6 +48,8 @@ namespace gcLimat.Models
         public string ultimoMuestreo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_MANTENIMIENTO> tbl_MANTENIMIENTO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_PRUEBACROMATOGRAFICA> tbl_PRUEBACROMATOGRAFICA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_PRUEBAELECTRICA> tbl_PRUEBAELECTRICA { get; set; }
@@ -53,6 +57,8 @@ namespace gcLimat.Models
         public virtual ICollection<tbl_PRUEBAFISICA> tbl_PRUEBAFISICA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_PRUEBAQUIMICA> tbl_PRUEBAQUIMICA { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_RECOLECCIONMUESTRA> tbl_RECOLECCIONMUESTRA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_REPORTE> tbl_REPORTE { get; set; }
     }

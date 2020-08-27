@@ -17,14 +17,6 @@
           <Property Name="email" Type="varchar" MaxLength="40" Nullable="false" />
           <Property Name="lugar" Type="varchar" MaxLength="40" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'gdlimat.dbo.tbl_CONTROLDEUSUARIOS' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
-        <EntityType Name="tbl_CONTROLDEUSUARIOS">
-          <Key>
-            <PropertyRef Name="registro" />
-          </Key>
-          <Property Name="registro" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
         <EntityType Name="tbl_EQUIPO">
           <Key>
             <PropertyRef Name="idEquipo" />
@@ -49,6 +41,17 @@ advertencia 6002: La tabla o vista 'gdlimat.dbo.tbl_CONTROLDEUSUARIOS' no tiene 
           <Property Name="ultimoReporte" Type="varchar" MaxLength="20" />
           <Property Name="ultimoMantenimiento" Type="varchar" MaxLength="20" />
           <Property Name="ultimoMuestreo" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tbl_MANTENIMIENTO">
+          <Key>
+            <PropertyRef Name="idMantenimiento" />
+          </Key>
+          <Property Name="idMantenimiento" Type="int" Nullable="false" />
+          <Property Name="idEquipo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="tipoMantenimiento" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="supervisor" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="fecha" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="tbl_PRUEBACROMATOGRAFICA">
           <Key>
@@ -96,6 +99,24 @@ advertencia 6002: La tabla o vista 'gdlimat.dbo.tbl_CONTROLDEUSUARIOS' no tiene 
           <Property Name="numNeutralizacionAcido" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="PBC" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
+        <EntityType Name="tbl_RECOLECCIONMUESTRA">
+          <Key>
+            <PropertyRef Name="idRecoleccion" />
+          </Key>
+          <Property Name="idRecoleccion" Type="int" Nullable="false" />
+          <Property Name="idEquipo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="supervisor" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="fecha" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'gdlimat.dbo.tbl_REGISTROS' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="tbl_REGISTROS">
+          <Key>
+            <PropertyRef Name="registro" />
+          </Key>
+          <Property Name="registro" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="tbl_REPORTE">
           <Key>
             <PropertyRef Name="codigoMuestra" />
@@ -125,6 +146,18 @@ advertencia 6002: La tabla o vista 'gdlimat.dbo.tbl_UNIDADMEDIDA' no tiene defin
           <Property Name="unidadMedida" Type="varchar" MaxLength="40" Nullable="false" />
           <Property Name="valorRecomendado" Type="varchar" MaxLength="40" />
         </EntityType>
+        <Association Name="FK_Equipo_Mantenimiento">
+          <End Role="tbl_EQUIPO" Type="Self.tbl_EQUIPO" Multiplicity="1" />
+          <End Role="tbl_MANTENIMIENTO" Type="Self.tbl_MANTENIMIENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_EQUIPO">
+              <PropertyRef Name="idEquipo" />
+            </Principal>
+            <Dependent Role="tbl_MANTENIMIENTO">
+              <PropertyRef Name="idEquipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Equipo_PruebaCromatografica">
           <End Role="tbl_EQUIPO" Type="Self.tbl_EQUIPO" Multiplicity="1" />
           <End Role="tbl_PRUEBACROMATOGRAFICA" Type="Self.tbl_PRUEBACROMATOGRAFICA" Multiplicity="*" />
@@ -173,6 +206,18 @@ advertencia 6002: La tabla o vista 'gdlimat.dbo.tbl_UNIDADMEDIDA' no tiene defin
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Equipo_RecoleccioMuestras">
+          <End Role="tbl_EQUIPO" Type="Self.tbl_EQUIPO" Multiplicity="1" />
+          <End Role="tbl_RECOLECCIONMUESTRA" Type="Self.tbl_RECOLECCIONMUESTRA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_EQUIPO">
+              <PropertyRef Name="idEquipo" />
+            </Principal>
+            <Dependent Role="tbl_RECOLECCIONMUESTRA">
+              <PropertyRef Name="idEquipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Muestra_Cliente">
           <End Role="tbl_CLIENTES" Type="Self.tbl_CLIENTES" Multiplicity="1" />
           <End Role="tbl_REPORTE" Type="Self.tbl_REPORTE" Multiplicity="*" />
@@ -200,15 +245,17 @@ advertencia 6002: La tabla o vista 'gdlimat.dbo.tbl_UNIDADMEDIDA' no tiene defin
         <EntityContainer Name="gdlimatModelStoreContainer">
           <EntitySet Name="tbl_CLIENTES" EntityType="Self.tbl_CLIENTES" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_EQUIPO" EntityType="Self.tbl_EQUIPO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_MANTENIMIENTO" EntityType="Self.tbl_MANTENIMIENTO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_PRUEBACROMATOGRAFICA" EntityType="Self.tbl_PRUEBACROMATOGRAFICA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_PRUEBAELECTRICA" EntityType="Self.tbl_PRUEBAELECTRICA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_PRUEBAFISICA" EntityType="Self.tbl_PRUEBAFISICA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_PRUEBAQUIMICA" EntityType="Self.tbl_PRUEBAQUIMICA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_RECOLECCIONMUESTRA" EntityType="Self.tbl_RECOLECCIONMUESTRA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_REPORTE" EntityType="Self.tbl_REPORTE" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbl_CONTROLDEUSUARIOS" EntityType="Self.tbl_CONTROLDEUSUARIOS" store:Type="Tables" store:Schema="dbo">
+          <EntitySet Name="tbl_REGISTROS" EntityType="Self.tbl_REGISTROS" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [tbl_CONTROLDEUSUARIOS].[registro] AS [registro]
-    FROM [dbo].[tbl_CONTROLDEUSUARIOS] AS [tbl_CONTROLDEUSUARIOS]</DefiningQuery>
+    [tbl_REGISTROS].[registro] AS [registro]
+    FROM [dbo].[tbl_REGISTROS] AS [tbl_REGISTROS]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="tbl_UNIDADMEDIDA" EntityType="Self.tbl_UNIDADMEDIDA" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -217,6 +264,10 @@ advertencia 6002: La tabla o vista 'gdlimat.dbo.tbl_UNIDADMEDIDA' no tiene defin
     [tbl_UNIDADMEDIDA].[valorRecomendado] AS [valorRecomendado]
     FROM [dbo].[tbl_UNIDADMEDIDA] AS [tbl_UNIDADMEDIDA]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="FK_Equipo_Mantenimiento" Association="Self.FK_Equipo_Mantenimiento">
+            <End Role="tbl_EQUIPO" EntitySet="tbl_EQUIPO" />
+            <End Role="tbl_MANTENIMIENTO" EntitySet="tbl_MANTENIMIENTO" />
+          </AssociationSet>
           <AssociationSet Name="FK_Equipo_PruebaCromatografica" Association="Self.FK_Equipo_PruebaCromatografica">
             <End Role="tbl_EQUIPO" EntitySet="tbl_EQUIPO" />
             <End Role="tbl_PRUEBACROMATOGRAFICA" EntitySet="tbl_PRUEBACROMATOGRAFICA" />
@@ -232,6 +283,10 @@ advertencia 6002: La tabla o vista 'gdlimat.dbo.tbl_UNIDADMEDIDA' no tiene defin
           <AssociationSet Name="FK_Equipo_PruebaQuimica" Association="Self.FK_Equipo_PruebaQuimica">
             <End Role="tbl_EQUIPO" EntitySet="tbl_EQUIPO" />
             <End Role="tbl_PRUEBAQUIMICA" EntitySet="tbl_PRUEBAQUIMICA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipo_RecoleccioMuestras" Association="Self.FK_Equipo_RecoleccioMuestras">
+            <End Role="tbl_EQUIPO" EntitySet="tbl_EQUIPO" />
+            <End Role="tbl_RECOLECCIONMUESTRA" EntitySet="tbl_RECOLECCIONMUESTRA" />
           </AssociationSet>
           <AssociationSet Name="FK_Muestra_Cliente" Association="Self.FK_Muestra_Cliente">
             <End Role="tbl_CLIENTES" EntitySet="tbl_CLIENTES" />
@@ -284,11 +339,25 @@ advertencia 6002: La tabla o vista 'gdlimat.dbo.tbl_UNIDADMEDIDA' no tiene defin
           <Property Name="ultimoReporte" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="ultimoMantenimiento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="ultimoMuestreo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_MANTENIMIENTO" Relationship="Self.FK_Equipo_Mantenimiento" FromRole="tbl_EQUIPO" ToRole="tbl_MANTENIMIENTO" />
           <NavigationProperty Name="tbl_PRUEBACROMATOGRAFICA" Relationship="Self.FK_Equipo_PruebaCromatografica" FromRole="tbl_EQUIPO" ToRole="tbl_PRUEBACROMATOGRAFICA" />
           <NavigationProperty Name="tbl_PRUEBAELECTRICA" Relationship="Self.FK_Equipo_PruebaElectrica" FromRole="tbl_EQUIPO" ToRole="tbl_PRUEBAELECTRICA" />
           <NavigationProperty Name="tbl_PRUEBAFISICA" Relationship="Self.FK_Equipo_PruebaFisica" FromRole="tbl_EQUIPO" ToRole="tbl_PRUEBAFISICA" />
           <NavigationProperty Name="tbl_PRUEBAQUIMICA" Relationship="Self.FK_Equipo_PruebaQuimica" FromRole="tbl_EQUIPO" ToRole="tbl_PRUEBAQUIMICA" />
+          <NavigationProperty Name="tbl_RECOLECCIONMUESTRA" Relationship="Self.FK_Equipo_RecoleccioMuestras" FromRole="tbl_EQUIPO" ToRole="tbl_RECOLECCIONMUESTRA" />
           <NavigationProperty Name="tbl_REPORTE" Relationship="Self.FK_Muestra_Equipo" FromRole="tbl_EQUIPO" ToRole="tbl_REPORTE" />
+        </EntityType>
+        <EntityType Name="tbl_MANTENIMIENTO">
+          <Key>
+            <PropertyRef Name="idMantenimiento" />
+          </Key>
+          <Property Name="idMantenimiento" Type="Int32" Nullable="false" />
+          <Property Name="idEquipo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tipoMantenimiento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="supervisor" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tbl_EQUIPO" Relationship="Self.FK_Equipo_Mantenimiento" FromRole="tbl_MANTENIMIENTO" ToRole="tbl_EQUIPO" />
         </EntityType>
         <EntityType Name="tbl_PRUEBACROMATOGRAFICA">
           <Key>
@@ -340,6 +409,17 @@ advertencia 6002: La tabla o vista 'gdlimat.dbo.tbl_UNIDADMEDIDA' no tiene defin
           <Property Name="PBC" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="tbl_EQUIPO" Relationship="Self.FK_Equipo_PruebaQuimica" FromRole="tbl_PRUEBAQUIMICA" ToRole="tbl_EQUIPO" />
         </EntityType>
+        <EntityType Name="tbl_RECOLECCIONMUESTRA">
+          <Key>
+            <PropertyRef Name="idRecoleccion" />
+          </Key>
+          <Property Name="idRecoleccion" Type="Int32" Nullable="false" />
+          <Property Name="idEquipo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="supervisor" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tbl_EQUIPO" Relationship="Self.FK_Equipo_RecoleccioMuestras" FromRole="tbl_RECOLECCIONMUESTRA" ToRole="tbl_EQUIPO" />
+        </EntityType>
         <EntityType Name="tbl_REPORTE">
           <Key>
             <PropertyRef Name="codigoMuestra" />
@@ -360,7 +440,7 @@ advertencia 6002: La tabla o vista 'gdlimat.dbo.tbl_UNIDADMEDIDA' no tiene defin
           <NavigationProperty Name="tbl_CLIENTES" Relationship="Self.FK_Muestra_Cliente" FromRole="tbl_REPORTE" ToRole="tbl_CLIENTES" />
           <NavigationProperty Name="tbl_EQUIPO" Relationship="Self.FK_Muestra_Equipo" FromRole="tbl_REPORTE" ToRole="tbl_EQUIPO" />
         </EntityType>
-        <EntityType Name="tbl_CONTROLDEUSUARIOS">
+        <EntityType Name="tbl_REGISTROS">
           <Key>
             <PropertyRef Name="registro" />
           </Key>
@@ -384,6 +464,18 @@ advertencia 6002: La tabla o vista 'gdlimat.dbo.tbl_UNIDADMEDIDA' no tiene defin
             </Principal>
             <Dependent Role="tbl_REPORTE">
               <PropertyRef Name="cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipo_Mantenimiento">
+          <End Role="tbl_EQUIPO" Type="Self.tbl_EQUIPO" Multiplicity="1" />
+          <End Role="tbl_MANTENIMIENTO" Type="Self.tbl_MANTENIMIENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_EQUIPO">
+              <PropertyRef Name="idEquipo" />
+            </Principal>
+            <Dependent Role="tbl_MANTENIMIENTO">
+              <PropertyRef Name="idEquipo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -435,6 +527,18 @@ advertencia 6002: La tabla o vista 'gdlimat.dbo.tbl_UNIDADMEDIDA' no tiene defin
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Equipo_RecoleccioMuestras">
+          <End Role="tbl_EQUIPO" Type="Self.tbl_EQUIPO" Multiplicity="1" />
+          <End Role="tbl_RECOLECCIONMUESTRA" Type="Self.tbl_RECOLECCIONMUESTRA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_EQUIPO">
+              <PropertyRef Name="idEquipo" />
+            </Principal>
+            <Dependent Role="tbl_RECOLECCIONMUESTRA">
+              <PropertyRef Name="idEquipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Muestra_Equipo">
           <End Role="tbl_EQUIPO" Type="Self.tbl_EQUIPO" Multiplicity="1" />
           <End Role="tbl_REPORTE" Type="Self.tbl_REPORTE" Multiplicity="*" />
@@ -447,19 +551,25 @@ advertencia 6002: La tabla o vista 'gdlimat.dbo.tbl_UNIDADMEDIDA' no tiene defin
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="gdlimatEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="gdlimatEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tbl_CLIENTES" EntityType="Self.tbl_CLIENTES" />
           <EntitySet Name="tbl_EQUIPO" EntityType="Self.tbl_EQUIPO" />
+          <EntitySet Name="tbl_MANTENIMIENTO" EntityType="Self.tbl_MANTENIMIENTO" />
           <EntitySet Name="tbl_PRUEBACROMATOGRAFICA" EntityType="Self.tbl_PRUEBACROMATOGRAFICA" />
           <EntitySet Name="tbl_PRUEBAELECTRICA" EntityType="Self.tbl_PRUEBAELECTRICA" />
           <EntitySet Name="tbl_PRUEBAFISICA" EntityType="Self.tbl_PRUEBAFISICA" />
           <EntitySet Name="tbl_PRUEBAQUIMICA" EntityType="Self.tbl_PRUEBAQUIMICA" />
+          <EntitySet Name="tbl_RECOLECCIONMUESTRA" EntityType="Self.tbl_RECOLECCIONMUESTRA" />
           <EntitySet Name="tbl_REPORTE" EntityType="Self.tbl_REPORTE" />
-          <EntitySet Name="tbl_CONTROLDEUSUARIOS" EntityType="Self.tbl_CONTROLDEUSUARIOS" />
+          <EntitySet Name="tbl_REGISTROS" EntityType="Self.tbl_REGISTROS" />
           <EntitySet Name="tbl_UNIDADMEDIDA" EntityType="Self.tbl_UNIDADMEDIDA" />
           <AssociationSet Name="FK_Muestra_Cliente" Association="Self.FK_Muestra_Cliente">
             <End Role="tbl_CLIENTES" EntitySet="tbl_CLIENTES" />
             <End Role="tbl_REPORTE" EntitySet="tbl_REPORTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipo_Mantenimiento" Association="Self.FK_Equipo_Mantenimiento">
+            <End Role="tbl_EQUIPO" EntitySet="tbl_EQUIPO" />
+            <End Role="tbl_MANTENIMIENTO" EntitySet="tbl_MANTENIMIENTO" />
           </AssociationSet>
           <AssociationSet Name="FK_Equipo_PruebaCromatografica" Association="Self.FK_Equipo_PruebaCromatografica">
             <End Role="tbl_EQUIPO" EntitySet="tbl_EQUIPO" />
@@ -477,6 +587,10 @@ advertencia 6002: La tabla o vista 'gdlimat.dbo.tbl_UNIDADMEDIDA' no tiene defin
             <End Role="tbl_EQUIPO" EntitySet="tbl_EQUIPO" />
             <End Role="tbl_PRUEBAQUIMICA" EntitySet="tbl_PRUEBAQUIMICA" />
           </AssociationSet>
+          <AssociationSet Name="FK_Equipo_RecoleccioMuestras" Association="Self.FK_Equipo_RecoleccioMuestras">
+            <End Role="tbl_EQUIPO" EntitySet="tbl_EQUIPO" />
+            <End Role="tbl_RECOLECCIONMUESTRA" EntitySet="tbl_RECOLECCIONMUESTRA" />
+          </AssociationSet>
           <AssociationSet Name="FK_Muestra_Equipo" Association="Self.FK_Muestra_Equipo">
             <End Role="tbl_EQUIPO" EntitySet="tbl_EQUIPO" />
             <End Role="tbl_REPORTE" EntitySet="tbl_REPORTE" />
@@ -487,7 +601,7 @@ advertencia 6002: La tabla o vista 'gdlimat.dbo.tbl_UNIDADMEDIDA' no tiene defin
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="gdlimatModelStoreContainer" CdmEntityContainer="gdlimatEntities">
+        <EntityContainerMapping StorageEntityContainer="gdlimatModelStoreContainer" CdmEntityContainer="gdlimatEntities1">
           <EntitySetMapping Name="tbl_CLIENTES">
             <EntityTypeMapping TypeName="gdlimatModel.tbl_CLIENTES">
               <MappingFragment StoreEntitySet="tbl_CLIENTES">
@@ -524,6 +638,18 @@ advertencia 6002: La tabla o vista 'gdlimat.dbo.tbl_UNIDADMEDIDA' no tiene defin
                 <ScalarProperty Name="ultimoReporte" ColumnName="ultimoReporte" />
                 <ScalarProperty Name="ultimoMantenimiento" ColumnName="ultimoMantenimiento" />
                 <ScalarProperty Name="ultimoMuestreo" ColumnName="ultimoMuestreo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_MANTENIMIENTO">
+            <EntityTypeMapping TypeName="gdlimatModel.tbl_MANTENIMIENTO">
+              <MappingFragment StoreEntitySet="tbl_MANTENIMIENTO">
+                <ScalarProperty Name="idMantenimiento" ColumnName="idMantenimiento" />
+                <ScalarProperty Name="idEquipo" ColumnName="idEquipo" />
+                <ScalarProperty Name="tipoMantenimiento" ColumnName="tipoMantenimiento" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="supervisor" ColumnName="supervisor" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -577,6 +703,17 @@ advertencia 6002: La tabla o vista 'gdlimat.dbo.tbl_UNIDADMEDIDA' no tiene defin
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tbl_RECOLECCIONMUESTRA">
+            <EntityTypeMapping TypeName="gdlimatModel.tbl_RECOLECCIONMUESTRA">
+              <MappingFragment StoreEntitySet="tbl_RECOLECCIONMUESTRA">
+                <ScalarProperty Name="idRecoleccion" ColumnName="idRecoleccion" />
+                <ScalarProperty Name="idEquipo" ColumnName="idEquipo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="supervisor" ColumnName="supervisor" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tbl_REPORTE">
             <EntityTypeMapping TypeName="gdlimatModel.tbl_REPORTE">
               <MappingFragment StoreEntitySet="tbl_REPORTE">
@@ -596,9 +733,9 @@ advertencia 6002: La tabla o vista 'gdlimat.dbo.tbl_UNIDADMEDIDA' no tiene defin
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tbl_CONTROLDEUSUARIOS">
-            <EntityTypeMapping TypeName="gdlimatModel.tbl_CONTROLDEUSUARIOS">
-              <MappingFragment StoreEntitySet="tbl_CONTROLDEUSUARIOS">
+          <EntitySetMapping Name="tbl_REGISTROS">
+            <EntityTypeMapping TypeName="gdlimatModel.tbl_REGISTROS">
+              <MappingFragment StoreEntitySet="tbl_REGISTROS">
                 <ScalarProperty Name="registro" ColumnName="registro" />
               </MappingFragment>
             </EntityTypeMapping>

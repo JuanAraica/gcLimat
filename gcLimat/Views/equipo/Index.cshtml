@@ -1,7 +1,11 @@
 ﻿@model List<gcLimat.Models.ViewModels.ListEquipoViewModel>
 @{<br><br>
     ViewBag.Title = "Equipos Registrados";
-}
+}<style type="text/css">
+    tr:nth-child(even) {
+        background-color: #ddd;
+    }
+</style>
 
 <h2>@ViewBag.Title</h2>
 <br><br>
@@ -31,6 +35,7 @@
                     <th>Ultimo Reporte</th>
                     <th>Ultimo Mantenimiento</th>
                     <th>Ultimo Muestreo</th>
+                    <td colspan="7" align="center">Elija una Accion a Realizar</td>
                 </tr>
                 @foreach (var oEquipo in Model)
                 {
@@ -57,18 +62,20 @@
                         <td>@oEquipo.ultimoMuestreo</td>
                         <td>
                             <select name="Accion" id="accion">
-                                <option value="volvo">Agregar Prueba Fisica</option>
-                                <option value="volvo">Agregar Prueba Cromatografica</option>
-                                <option value="volvo">Agregar Prueba Electrica</option>
-                                <option value="volvo">Agregar Prueba Quimica</option>
+                                <option value="0">------------------</option>
+                                <option value="1">Prueba Fisica</option>
+                                <option value="2">Prueba Cromatografica</option>
+                                <option value="3">Prueba Electrica</option>
+                                <option value="4">Prueba Quimica</option>
                             </select>
                         </td>
                         <td><a class="btn btn-default" href="~/equipo/EliminarEquipo/@oEquipo.idEquipo">Ingresar Prueba</a></td>
                         <td>
                             <select name="Mantenimiento" id="accion">
-                                <option value="volvo">Mantenimiento Preventivo</option>
-                                <option value="volvo">Mantenimiento Correctivo</option>
-                                <option value="volvo">Recoleccion de muestras</option>
+                                <option value="0">------------------</option>
+                                <option value="1">Mantenimiento Preventivo</option>
+                                <option value="2">Mantenimiento Correctivo</option>
+                                <option value="3">Recoleccion de muestras</option>
                             </select>
                         </td>
                         <td><a class="btn btn-default" href="~/equipo/EliminarEquipo/@oEquipo.idEquipo">Elegir accion</a></td>

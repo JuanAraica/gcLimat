@@ -16,7 +16,7 @@ namespace gcLimat.Controllers
         public ActionResult Index()
         {
             List<ListPruebaElectricaViewModel> lst;
-            using (gdlimatEntities db = new gdlimatEntities())
+            using (gdlimatEntities1 db = new gdlimatEntities1())
                 return View();
         }
     }

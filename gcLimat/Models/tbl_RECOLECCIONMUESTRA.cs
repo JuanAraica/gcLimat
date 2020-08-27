@@ -12,8 +12,14 @@ namespace gcLimat.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tbl_CONTROLDEUSUARIOS
+    public partial class tbl_RECOLECCIONMUESTRA
     {
-        public string registro { get; set; }
+        public int idRecoleccion { get; set; }
+        public string idEquipo { get; set; }
+        public string descripcion { get; set; }
+        public string supervisor { get; set; }
+        public string fecha { get; set; }
+    
+        public virtual tbl_EQUIPO tbl_EQUIPO { get; set; }
     }
 }

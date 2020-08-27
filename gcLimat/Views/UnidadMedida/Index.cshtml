@@ -1,0 +1,44 @@
+﻿@model List<gcLimat.Models.ViewModels.ListUnidadMedidaViewModel>
+@{
+    <br>
+    <br>
+    ViewBag.Title = "Unidades de medida registradas en el sistema ";
+}
+
+<style type="text/css">
+    tr:nth-child(even) {
+        background-color: #ddd;
+    }
+</style>
+
+<h2>@ViewBag.Title</h2>
+<br>
+<br>
+<div class="row">
+    <a href="~/equipo/NuevaUnidadMedida" class="btn btn-primary">Ingresar nueva unidad de medida</a>
+    <br><br>
+    <div class="col-md-12">
+        <table class="table">
+
+
+
+
+            <tr>
+                <th>Factor a medir</th>
+                <th>Unidad de medida</th>
+                <th>Valor recomendado</th>
+
+            </tr>
+            @foreach (var oUnidadMedida in Model)
+            {
+                <tr>
+                    <td>@oUnidadMedida.factorAMedir</td>
+                    <td>@oUnidadMedida.unidadMedida </td>
+                    <td>@oUnidadMedida.valorRecomendado </td>
+
+                </tr>
+            }
+        </table>
+    </div>
+
+</div>

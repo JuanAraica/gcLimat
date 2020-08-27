@@ -84,7 +84,7 @@
                         </ul>
                     </li>
                     <li>
-                        @Html.ActionLink("Mantenimiento", "", "")
+                        @Html.ActionLink("Mantenimiento", "Index", "Mantenimiento")
                         <ul>
                             <li>@Html.ActionLink("Mantenimiento Preventivo", "MantenimientoPreventivo", "equipo")</li>
                             <li>@Html.ActionLink("Mantenimiento Correctivo", "MantenimientoCorrectivo", "equipo")</li>
@@ -92,6 +92,7 @@
                         </ul>
                     </li>
                     <li>@Html.ActionLink("Reportes", " ", " ")</li>
+                    <li>@Html.ActionLink("Unidades de medida", "Index", "UnidadMedida")</li>
                 </ul>
         </div>
         </div>
@@ -100,7 +101,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p align="right">&copy; @DateTime.Now.Year || LIMAT</p>
+            <p align="center">&copy; @DateTime.Now.Year || LIMAT</p>
              <h6 align="center">
     Esta plataforma, incluidos los datos adjuntos, es para el uso exclusivo de personal autorizado y contiene información confidencial y protegida legalmente. Si usted no ha sido autorizado. Por favor abandonar la plataforma de manera inmediata, de lo contrario debera atenerse a medidas legales por parte del INSTITUTO COSTARRICENSE DE ELECTRICIDAD.
 </h6> 

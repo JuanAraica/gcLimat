@@ -13,10 +13,10 @@ namespace gcLimat.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class gdlimatEntities : DbContext
+    public partial class gdlimatEntities1 : DbContext
     {
-        public gdlimatEntities()
-            : base("name=gdlimatEntities")
+        public gdlimatEntities1()
+            : base("name=gdlimatEntities1")
         {
         }
     
@@ -27,12 +27,14 @@ namespace gcLimat.Models
     
         public virtual DbSet<tbl_CLIENTES> tbl_CLIENTES { get; set; }
         public virtual DbSet<tbl_EQUIPO> tbl_EQUIPO { get; set; }
+        public virtual DbSet<tbl_MANTENIMIENTO> tbl_MANTENIMIENTO { get; set; }
         public virtual DbSet<tbl_PRUEBACROMATOGRAFICA> tbl_PRUEBACROMATOGRAFICA { get; set; }
         public virtual DbSet<tbl_PRUEBAELECTRICA> tbl_PRUEBAELECTRICA { get; set; }
         public virtual DbSet<tbl_PRUEBAFISICA> tbl_PRUEBAFISICA { get; set; }
         public virtual DbSet<tbl_PRUEBAQUIMICA> tbl_PRUEBAQUIMICA { get; set; }
+        public virtual DbSet<tbl_RECOLECCIONMUESTRA> tbl_RECOLECCIONMUESTRA { get; set; }
         public virtual DbSet<tbl_REPORTE> tbl_REPORTE { get; set; }
-        public virtual DbSet<tbl_CONTROLDEUSUARIOS> tbl_CONTROLDEUSUARIOS { get; set; }
+        public virtual DbSet<tbl_REGISTROS> tbl_REGISTROS { get; set; }
         public virtual DbSet<tbl_UNIDADMEDIDA> tbl_UNIDADMEDIDA { get; set; }
     }
 }

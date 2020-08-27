@@ -15,7 +15,7 @@ namespace gcLimat.Controllers
         // GET: Login
         public ActionResult Index()
         {
-            using (gdlimatEntities db = new gdlimatEntities())
+            using (gdlimatEntities1 db = new gdlimatEntities1())
                 return View();
         }
     }

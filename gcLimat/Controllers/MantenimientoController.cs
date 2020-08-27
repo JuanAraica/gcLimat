@@ -16,8 +16,22 @@ namespace gcLimat.Controllers
         public ActionResult Index()
         {
             List<ListMantenimientoViewModel> lst;
-            using (gdlimatEntities db = new gdlimatEntities())
-                return View();
+            using (gdlimatEntities1 db = new gdlimatEntities1())
+            {
+                lst = (from d in db.tbl_MANTENIMIENTO
+                       select new ListMantenimientoViewModel
+                       {
+
+                           idMantenimiento = d.idMantenimiento,
+                           idEquipo = d.idEquipo,
+                           tipoMantenimiento = d.tipoMantenimiento,
+                           descripcion = d.descripcion,
+                           supervisor = d.supervisor,
+                           fecha = d.fecha
+
+                       }).ToList();
+            }
+            return View(lst);
         }
     }
 }

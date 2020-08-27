@@ -1,7 +1,42 @@
-﻿
+﻿@model List<gcLimat.Models.ViewModels.ListMantenimientoViewModel>
 @{
-    ViewBag.Title = "Index";
-}
+    <br>
+    <br>
+    ViewBag.Title = "Mantenimientos realizados al equipo: ";  
+}<style type="text/css">
+    tr:nth-child(even) {
+        background-color: #ddd;
+    }
+</style>
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
+<br>
+<br>
+<div class="row">
+    <a href="~/equipo/NuevoMantenimiento" class="btn btn-primary">Nuevo Manteniento</a>
+    <br><br>
+    <div class="col-md-12">
+        <table class="table">
+            <tr>
+                <th>ID del Mantenimiento</th>
+                <th>ID del equipo</th>
+                <th>Tipo de Mantenimiento</th>
+                <th>Descripción</th>
+                <th>Supervisor</th>
+                <th>Fecha</th>
+            </tr>
+            @foreach (var oMantenimiento in Model)
+            {
+                <tr>
+                    <td>@oMantenimiento.idMantenimiento</td>
+                    <td>@oMantenimiento.idEquipo</td>
+                    <td>@oMantenimiento.tipoMantenimiento</td>
+                    <td>@oMantenimiento.descripcion</td>
+                    <td>@oMantenimiento.supervisor</td>
+                    <td>@oMantenimiento.fecha</td>
+                </tr>
+            }
+        </table>
+    </div>
 
+</div>
