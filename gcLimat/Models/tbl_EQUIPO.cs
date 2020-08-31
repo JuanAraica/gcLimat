@@ -9,6 +9,7 @@
 
 namespace gcLimat.Models
 {
+    using gcLimat.Models.ViewModels;
     using System;
     using System.Collections.Generic;
     
@@ -61,5 +62,10 @@ namespace gcLimat.Models
         public virtual ICollection<tbl_RECOLECCIONMUESTRA> tbl_RECOLECCIONMUESTRA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_REPORTE> tbl_REPORTE { get; set; }
+
+        public static implicit operator tbl_EQUIPO(EquipoViewModel v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

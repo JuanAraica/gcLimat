@@ -1,6 +1,6 @@
 ﻿@model List<gcLimat.Models.ViewModels.ListEquipoViewModel>
 @{<br><br>
-    ViewBag.Title = "Equipos Registrados";
+ViewBag.Title = "Equipos Registrados";
 }<style type="text/css">
     tr:nth-child(even) {
         background-color: #ddd;
@@ -37,52 +37,62 @@
                     <th>Ultimo Muestreo</th>
                     <td colspan="7" align="center">Elija una Accion a Realizar</td>
                 </tr>
-                @foreach (var oEquipo in Model)
+                @foreach (var oEquipo in Model)  
                 {
-                    <tr>
-                        <td>@oEquipo.idEquipo</td>
-                        <td>@oEquipo.tipoEquipo</td>
-                        <td>@oEquipo.region</td>
-                        <td>@oEquipo.potenciaMaxima</td>
-                        <td>@oEquipo.serie</td>
-                        <td>@oEquipo.marca</td>
-                        <td>@oEquipo.subEstacion</td>
-                        <td>@oEquipo.tipoRefrigeracion</td>
-                        <td>@oEquipo.tension</td>
-                        <td>@oEquipo.cantidadFase</td>
-                        <td>@oEquipo.cantidadAceite</td>
-                        <td>@oEquipo.annio</td>
-                        <td>@oEquipo.MVA</td>
-                        <td>@oEquipo.relacioTension</td>
-                        <td>@oEquipo.humedadRelativa</td>
-                        <td>@oEquipo.temperaturaAmbiente</td>
-                        <td>@oEquipo.temperaturaEquipo</td>
-                        <td>@oEquipo.ultimoReporte</td>
-                        <td>@oEquipo.ultimoMantenimiento</td>
-                        <td>@oEquipo.ultimoMuestreo</td>
-                        <td>
-                            <select name="Accion" id="accion">
-                                <option value="0">------------------</option>
-                                <option value="1">Prueba Fisica</option>
-                                <option value="2">Prueba Cromatografica</option>
-                                <option value="3">Prueba Electrica</option>
-                                <option value="4">Prueba Quimica</option>
-                            </select>
-                        </td>
-                        <td><a class="btn btn-default" href="~/equipo/EliminarEquipo/@oEquipo.idEquipo">Ingresar Prueba</a></td>
-                        <td>
-                            <select name="Mantenimiento" id="accion">
-                                <option value="0">------------------</option>
-                                <option value="1">Mantenimiento Preventivo</option>
-                                <option value="2">Mantenimiento Correctivo</option>
-                                <option value="3">Recoleccion de muestras</option>
-                            </select>
-                        </td>
-                        <td><a class="btn btn-default" href="~/equipo/EliminarEquipo/@oEquipo.idEquipo">Elegir accion</a></td>
-                        <td><a class="btn btn-default" href="~/equipo/EliminarEquipo/@oEquipo.idEquipo">Ultimo Informe</a></td>
-                        <td><a class="btn btn-default" href="~/equipo/EditarEquipo/@oEquipo.idEquipo">Editar</a></td>
-                        <td><a class="btn btn-danger" href="~/equipo/EliminarEquipo/@oEquipo.idEquipo">Eliminar</a></td>
-                    </tr>
+            <tr>
+                @*<td>@oEquipo.idEquipo</td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => oEquipo.idEquipo)
+                </td>
+                <td> @Html.DisplayFor(modelItem => oEquipo.tipoEquipo )</td>
+                <td> @Html.DisplayFor(modelItem => oEquipo.region )</td>
+                <td>@Html.DisplayFor(modelItem => oEquipo.potenciaMaxima) </td>
+                <td>@Html.DisplayFor(modelItem => oEquipo.serie)</td>
+                <td>@Html.DisplayFor(modelItem => oEquipo.marca)</td>
+                <td>@Html.DisplayFor(modelItem => oEquipo.subEstacion)</td>
+                <td>@Html.DisplayFor(modelItem => oEquipo.tipoRefrigeracion)</td>
+                <td>@Html.DisplayFor(modelItem => oEquipo.tension)</td>
+                <td>@Html.DisplayFor(modelItem => oEquipo.cantidadFase)</td>
+                <td>@Html.DisplayFor(modelItem => oEquipo.cantidadAceite)</td>
+                <td>@Html.DisplayFor(modelItem => oEquipo.annio)</td>
+                <td>@Html.DisplayFor(modelItem => oEquipo.MVA)</td>
+                <td>@Html.DisplayFor(modelItem => oEquipo.relacioTension)</td>
+                <td>@Html.DisplayFor(modelItem => oEquipo.humedadRelativa)</td>
+                <td>@Html.DisplayFor(modelItem => oEquipo.temperaturaAmbiente)</td>
+                <td>@Html.DisplayFor(modelItem => oEquipo.temperaturaEquipo)</td>
+                <td>@Html.DisplayFor(modelItem => oEquipo.ultimoReporte)</td>
+                <td>@Html.DisplayFor(modelItem => oEquipo.ultimoMantenimiento)</td>
+                <td>@Html.DisplayFor(modelItem => oEquipo.ultimoMuestreo)</td>
+                <td>
+                    <select name="Accion" id="accion">
+                        <option value="0">------------------</option>
+                        <option value="1">Prueba Fisica</option>
+                        <option value="2">Prueba Cromatografica</option>
+                        <option value="3">Prueba Electrica</option>
+                        <option value="4">Prueba Quimica</option>
+                    </select>
+                </td>
+                <td><a class="btn btn-default" href="~/equipo/EliminarEquipo/@oEquipo.idEquipo">Ingresar Prueba</a></td>
+                <td>
+                    <select name="Mantenimiento" id="accion">
+                        <option value="0">------------------</option>
+                        <option value="1">Mantenimiento Preventivo</option>
+                        <option value="2">Mantenimiento Correctivo</option>
+                        <option value="3">Recoleccion de muestras</option>
+                    </select>
+                </td>
+                <td><a class="btn btn-default" href="~/equipo/EliminarEquipo/@oEquipo.idEquipo">Elegir accion</a></td>
+                <td><a class="btn btn-default" href="~/equipo/EliminarEquipo/@oEquipo.idEquipo">Ultimo Informe</a></td>
+                @*<td><a class="btn btn-default" href="~/equipo/EditarEquipo/@oEquipo.idEquipo">Editar</a></td>*@
+
+
+
+
+
+
+                <td>@Html.ActionLink("Editar", "EditarEquipo", new { idEquipo = @oEquipo.idEquipo })</td>
+                <td><a class="btn btn-danger" href="~/equipo/EliminarEquipo/@oEquipo.idEquipo">Eliminar</a></td>
+            </tr>
                 }
             </table>
         </div>

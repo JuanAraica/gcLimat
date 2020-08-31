@@ -1,0 +1,147 @@
+﻿@model List<gcLimat.Models.ViewModels.ListEquipoViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.idEquipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tipoEquipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.region)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.potenciaMaxima)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.serie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.marca)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.subEstacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tipoRefrigeracion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tension)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cantidadFase)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cantidadAceite)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.annio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MVA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.relacioTension)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.humedadRelativa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.temperaturaAmbiente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.temperaturaEquipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ultimoReporte)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ultimoMantenimiento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ultimoMuestreo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.idEquipo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipoEquipo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.region)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.potenciaMaxima)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.serie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.marca)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.subEstacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipoRefrigeracion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tension)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cantidadFase)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cantidadAceite)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.annio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MVA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.relacioTension)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.humedadRelativa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.temperaturaAmbiente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.temperaturaEquipo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ultimoReporte)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ultimoMantenimiento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ultimoMuestreo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
