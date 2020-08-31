@@ -1,7 +1,41 @@
-﻿
+﻿@model List<gcLimat.Models.ViewModels.ListPruebaQuimicaVewModel>
 @{
-    ViewBag.Title = "Index";
+    <br>
+    <br>
+    ViewBag.Title = "Pruebas Quimicas Registradas";
 }
+<style type="text/css">
+    tr:nth-child(even) {
+        background-color: #ddd;
+    }
+</style>
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
+<br>
+<br>
+<div class="row">
+    <a href="~/PruebaQuimica/NuevaPruebaQuimica" class="btn btn-primary">Ingresar Prueba</a>
+    <br><br>
+    <div class="col-md-12">
+        <table class="table">
+            <tr>
+                <th>ID del Prueba</th>
+                <th>ID del equipo</th>
+                <th>Contenido de Agua</th>
+                <th>Num. de Neutralizacion de Acido </th>
+                <th>PBC</th>
+            </tr>
+            @foreach (var oPrueba in Model)
+            {
+                <tr>
+                    <td>@oPrueba.idPruebaEQuimica   </td>
+                    <td>@oPrueba.idEquipo</td>
+                    <td>@oPrueba.contenidoAgua</td>
+                    <td>@oPrueba.numNeutralizacionAcido  </td>
+                    <td>@oPrueba.PBC</td>
+                </tr>
+            }
+        </table>
+    </div>
 
+</div>

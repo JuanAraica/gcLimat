@@ -1,7 +1,43 @@
-﻿
+﻿@model List<gcLimat.Models.ViewModels.ListPruebaFisicaViewModel>
 @{
-    ViewBag.Title = "Index";
+    <br>
+    <br>
+    ViewBag.Title = "Pruebas Fisicas Registradas";
 }
+<style type="text/css">
+    tr:nth-child(even) {
+        background-color: #ddd;
+    }
+</style>
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
+<br>
+<br>
+<div class="row">
+    <a href="~/PruebaFisica/NuevaPruebaFisica" class="btn btn-primary">Ingresar Prueba</a>
+    <br><br>
+    <div class="col-md-12">
+        <table class="table">
+            <tr>
+                <th>ID del Prueba</th>
+                <th>ID del equipo</th>
+                <th>ExamenVisual</th>
+                <th>Color</th>
+                <th>Tension Interfacial</th>
+                <th>Gravedad Especifica 15C15 C° </th>
+            </tr>
+            @foreach (var oPrueba in Model)
+            {
+        <tr>
+            <td>@oPrueba.idPruebasFisicas  </td>
+            <td>@oPrueba.idEquipo</td>
+            <td>@oPrueba.examenVisual</td>
+            <td>@oPrueba.color </td>
+            <td>@oPrueba.tensionInterfacial</td>
+            <td>@oPrueba.gravedadEspecifica15C15C </td>
+        </tr>
+            }
+        </table>
+    </div>
 
+</div>

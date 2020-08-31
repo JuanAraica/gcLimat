@@ -22,9 +22,41 @@ namespace gcLimat.Controllers
                        select new ListRegistroViewModel
                        {
                            registro = d.registro
-                       }).ToList();
+
+
+            }).ToList();
             }
             return View(lst);
         }
+
+    public ActionResult RegistrarEvento()
+    {
+        return View();
     }
+
+    [HttpPost]
+    public ActionResult RegistrarEvento(RegistroViewModel model)
+    {
+        try
+        {
+            if (ModelState.IsValid)
+            {
+                using (gdlimatEntities1 db = new gdlimatEntities1())
+                {
+
+                    var oRegistro = new tbl_REGISTROS();
+                        oRegistro.registro = "Se ha registrado un nuevo equipo al ser "+DateTime.Now;
+                        db.tbl_REGISTROS.Add(oRegistro);
+                        db.SaveChanges();
+                    }
+            }
+            return View(model);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
+
+}
 }

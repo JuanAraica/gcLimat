@@ -1,7 +1,51 @@
-﻿
+﻿@model List<gcLimat.Models.ViewModels.ListPruebaCromatograficaViewModel>
 @{
-    ViewBag.Title = "Index";
+    <br>
+    <br>
+    ViewBag.Title = "Pruebas cromatograficas Registradas";
 }
+<style type="text/css">
+    tr:nth-child(even) {
+        background-color: #ddd;
+    }
+</style>
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
+<br>
+<br>
+<div class="row">
+    <a href="~/PruebaCromatografica/NuevaPruebaCromatografica" class="btn btn-primary">Ingresar Prueba</a>
+    <br><br>
+    <div class="col-md-12">
+        <table class="table">
+            <tr>
+                <th>ID del Prueba</th>
+                <th>ID del equipo</th>
+                <th>Dioxido de Carbono</th>
+                <th>Acetileno</th>
+                <th>Etileno</th>
+                <th>Etano</th>
+                <th>Metano</th>
+                <th>Monoxido de Carbono</th>
+                <th>Hidrogeno </th>
+                <th>Total de gases combusibles</th>
+            </tr>
+            @foreach (var oPrueba in Model)
+            {
+        <tr>
+            <td>@oPrueba.idPruebaCroma </td>
+            <td>@oPrueba.idEquipo</td>
+            <td>@oPrueba.dioxidoCarbono</td>
+            <td>@oPrueba.acetileno </td>
+            <td>@oPrueba.etileno</td>
+            <td>@oPrueba.etano </td>
+            <td>@oPrueba.metano</td>
+            <td>@oPrueba.monoxidoCarbono</td>
+            <td>@oPrueba.hidrogeno </td>
+            <td>@oPrueba.totalGasesCombusibles</td>
+        </tr>
+            }
+        </table>
+    </div>
 
+</div>

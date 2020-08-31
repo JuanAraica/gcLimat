@@ -1,7 +1,47 @@
-﻿
+﻿@model List<gcLimat.Models.ViewModels.ListPruebaElectricaViewModel>
 @{
-    ViewBag.Title = "Index";
+    <br>
+    <br>
+    ViewBag.Title = "Pruebas Electricas Registradas";
 }
+<style type="text/css">
+    tr:nth-child(even) {
+        background-color: #ddd;
+    }
+</style>
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
+<br>
+<br>
+<div class="row">
+    <a href="~/PruebaElectrica/NuevaPruebaElectrica" class="btn btn-primary">Ingresar Prueba</a>
+    <br><br>
+    <div class="col-md-12">
+        <table class="table">
+            <tr>
+                <th>ID del Prueba</th>
+                <th>ID del equipo</th>
+                <th>Rigidez DioElectrica</th>
+                <th>Factor potencia 100C</th>
+                <th>Resistividad100</th>
+            </tr>
+            @foreach (var oPrueba in Model)
+            {
+        <tr>
+            <td>@oPrueba.idPruebaElectrica  </td>
+            <td>@oPrueba.idEquipo</td>
+            <td>@oPrueba.rigidezDioElectrica</td>
+            <td>@oPrueba.factorPotencia100C </td>
+            <td>@oPrueba.resistividad100</td>
+            @*<td>
+                <a class="btn btn-default" href="~/PruebaElectrica/EditarPruebaElectrica/@oPruebaElectrica.idPruebaElectrica">Editar</a>
+            </td>
+            <td>
+                <a class="btn btn-danger" href="~/PruebaElectrica/EliminarPruebaElectrica/@oPruebaElectrica.idPruebaElectrica">Eliminar</a>
+            </td>*@
+        </tr>
+            }
+        </table>
+    </div>
 
+</div>

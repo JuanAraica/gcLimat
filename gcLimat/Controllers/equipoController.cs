@@ -13,6 +13,7 @@ namespace gcLimat.Controllers
 {
     public class equipoController : Controller
     {
+        RegistroController registro = new RegistroController();
         // GET: equipo
         public ActionResult Index()
         {
@@ -62,6 +63,7 @@ namespace gcLimat.Controllers
                     using (gdlimatEntities1 db = new gdlimatEntities1())
                     { 
                     var oEquipo = new tbl_EQUIPO();
+                    var oRegistro  = new tbl_REGISTROS();
                     oEquipo.idEquipo = model.idEquipo;
                     oEquipo.tipoEquipo = model.tipoEquipo;
                     oEquipo.region = model.region;
@@ -84,6 +86,8 @@ namespace gcLimat.Controllers
                     oEquipo.ultimoMuestreo = model.ultimoMuestreo;
                         db.tbl_EQUIPO.Add(oEquipo);
                         db.SaveChanges();
+
+                        registro.RegistrarEvento();
                     }
                     return Redirect("~/equipo/");
                 }
@@ -159,6 +163,7 @@ namespace gcLimat.Controllers
 
                         db.Entry(oEquipo).State = System.Data.Entity.EntityState.Modified;
                         db.SaveChanges();
+
                     }
 
                     return Redirect("~/equipo/");

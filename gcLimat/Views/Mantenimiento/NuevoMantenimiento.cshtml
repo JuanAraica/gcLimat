@@ -1,0 +1,48 @@
+﻿@model gcLimat.Models.ViewModels.MantenimientoViewModel
+@{
+    <br>
+    <br>
+    <br>
+    ViewBag.Title = "Ingreso de labores con el Equipo";
+}
+<h2>@ViewBag.Title</h2>
+<br>
+<br>
+<br>
+
+@using (Html.BeginForm("NuevoMantenimiento", "Mantenimiento", FormMethod.Post))
+{
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                @Html.LabelFor(d => d.idEquipo)
+                @Html.TextBoxFor(d => d.idEquipo, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.idEquipo, null, new { @class = "red" })
+            </div>            <div>
+                @Html.LabelFor(d => d.tipoMantenimiento)
+                @Html.TextBoxFor(d => d.tipoMantenimiento, "", new { @class = "form-control" })
+
+                @Html.ValidationMessageFor(d => d.tipoMantenimiento, null, new { @class = "red" })
+            </div>            <div>
+                @Html.LabelFor(d => d.descripcion)
+                @Html.TextBoxFor(d => d.descripcion, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.descripcion, null, new { @class = "red" })
+            </div>            <div>
+                @Html.LabelFor(d => d.supervisor)
+                @Html.TextBoxFor(d => d.supervisor, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.supervisor, null, new { @class = "red" })
+            </div>            <div>
+                @Html.LabelFor(d => d.fecha)<br />
+                @Html.EditorFor(d => d.fecha, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.fecha, null, new { @class = "red" })
+            </div>
+            <br />
+            <div style="text-align:right;">
+                <input value="Guardar" class="btn btn-primary" type="submit" />
+            </div>
+        </div>
+
+    </div>
+}
